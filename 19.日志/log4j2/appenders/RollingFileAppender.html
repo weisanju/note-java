@@ -1,0 +1,665 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>RollingFileAppender</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../../favicon.svg">
+        <link rel="shortcut icon" href="../../../favicon.png">
+        <link rel="stylesheet" href="../../../css/variables.css">
+        <link rel="stylesheet" href="../../../css/general.css">
+        <link rel="stylesheet" href="../../../css/chrome.css">
+        <link rel="stylesheet" href="../../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../../highlight.css">
+        <link rel="stylesheet" href="../../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../../../index.html">我的笔记库</a></li><li class="chapter-item expanded affix "><li class="part-title">java基础</li><li class="chapter-item expanded "><a href="../../../1.java基础_代理/index.html"><strong aria-hidden="true">1.</strong> 代理</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../1.java基础_代理/CGLIB.html"><strong aria-hidden="true">1.1.</strong> CGLIB</a></li><li class="chapter-item expanded "><a href="../../../1.java基础_代理/cglib的几种Callback.html"><strong aria-hidden="true">1.2.</strong> cglib的几种Callback</a></li><li class="chapter-item expanded "><a href="../../../1.java基础_代理/jdk动态代理.html"><strong aria-hidden="true">1.3.</strong> jdk动态代理</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> 对象拷贝</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../2.java基础_对象拷贝/mapstruct.html"><strong aria-hidden="true">2.1.</strong> mapstruct</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> 函数式编程</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../3.java基础_函数式编程/anyMatchAllMatch.html"><strong aria-hidden="true">3.1.</strong> anyMatchAllMatch</a></li><li class="chapter-item expanded "><a href="../../../3.java基础_函数式编程/java函数式编程.html"><strong aria-hidden="true">3.2.</strong> java函数式编程</a></li><li class="chapter-item expanded "><a href="../../../3.java基础_函数式编程/lamba表达式原理.html"><strong aria-hidden="true">3.3.</strong> lamba表达式原理</a></li><li class="chapter-item expanded "><a href="../../../3.java基础_函数式编程/方法引用.html"><strong aria-hidden="true">3.4.</strong> 方法引用</a></li><li class="chapter-item expanded "><a href="../../../3.java基础_函数式编程/流操作.html"><strong aria-hidden="true">3.5.</strong> 流操作</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> Bean校验</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../4.java基础_Bean校验/javaValidated.html"><strong aria-hidden="true">4.1.</strong> javaValidated</a></li></ol></li><li class="chapter-item expanded "><a href="../../../5.java基础_多线程与锁/index.html"><strong aria-hidden="true">5.</strong> 多线程与锁</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../5.java基础_多线程与锁/JUC线程同步工具.html"><strong aria-hidden="true">5.1.</strong> JUC线程同步工具</a></li><li class="chapter-item expanded "><a href="../../../5.java基础_多线程与锁/LockSupport.html"><strong aria-hidden="true">5.2.</strong> LockSupport</a></li><li class="chapter-item expanded "><a href="../../../5.java基础_多线程与锁/java内存模型.html"><strong aria-hidden="true">5.3.</strong> java内存模型</a></li><li class="chapter-item expanded "><a href="../../../5.java基础_多线程与锁/java线程状态.html"><strong aria-hidden="true">5.4.</strong> java线程状态</a></li><li class="chapter-item expanded "><a href="../../../5.java基础_多线程与锁/java锁.html"><strong aria-hidden="true">5.5.</strong> java锁</a></li><li class="chapter-item expanded "><a href="../../../5.java基础_多线程与锁/jvm线程模型.html"><strong aria-hidden="true">5.6.</strong> jvm线程模型</a></li><li class="chapter-item expanded "><a href="../../../5.java基础_多线程与锁/关于多线程与并发编码的心得.html"><strong aria-hidden="true">5.7.</strong> 关于多线程与并发编码的心得</a></li><li class="chapter-item expanded "><a href="../../../5.java基础_多线程与锁/线程操作.html"><strong aria-hidden="true">5.8.</strong> 线程操作</a></li><li class="chapter-item expanded "><a href="../../../5.java基础_多线程与锁/线程池.html"><strong aria-hidden="true">5.9.</strong> 线程池</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.10.</strong> 基于AQS的同步工具</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../5.java基础_多线程与锁/基于AQS的同步工具/AQS.html"><strong aria-hidden="true">5.10.1.</strong> AQS</a></li><li class="chapter-item expanded "><a href="../../../5.java基础_多线程与锁/基于AQS的同步工具/Condition条件等待.html"><strong aria-hidden="true">5.10.2.</strong> Condition条件等待</a></li><li class="chapter-item expanded "><a href="../../../5.java基础_多线程与锁/基于AQS的同步工具/CountDownLatch.html"><strong aria-hidden="true">5.10.3.</strong> CountDownLatch</a></li><li class="chapter-item expanded "><a href="../../../5.java基础_多线程与锁/基于AQS的同步工具/CyclicBarrier.html"><strong aria-hidden="true">5.10.4.</strong> CyclicBarrier</a></li><li class="chapter-item expanded "><a href="../../../5.java基础_多线程与锁/基于AQS的同步工具/Lock锁接口.html"><strong aria-hidden="true">5.10.5.</strong> Lock锁接口</a></li><li class="chapter-item expanded "><a href="../../../5.java基础_多线程与锁/基于AQS的同步工具/ReentrantLock.html"><strong aria-hidden="true">5.10.6.</strong> ReentrantLock</a></li><li class="chapter-item expanded "><a href="../../../5.java基础_多线程与锁/基于AQS的同步工具/ReentrantReadWriteLock.html"><strong aria-hidden="true">5.10.7.</strong> ReentrantReadWriteLock</a></li><li class="chapter-item expanded "><a href="../../../5.java基础_多线程与锁/基于AQS的同步工具/Semaphore.html"><strong aria-hidden="true">5.10.8.</strong> Semaphore</a></li><li class="chapter-item expanded "><a href="../../../5.java基础_多线程与锁/基于AQS的同步工具/StampedLock.html"><strong aria-hidden="true">5.10.9.</strong> StampedLock</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../../6.java基础_集合框架/index.html"><strong aria-hidden="true">6.</strong> 集合框架</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../6.java基础_集合框架/ArrayBlockingQueue.html"><strong aria-hidden="true">6.1.</strong> ArrayBlockingQueue</a></li><li class="chapter-item expanded "><a href="../../../6.java基础_集合框架/ArrayList.html"><strong aria-hidden="true">6.2.</strong> ArrayList</a></li><li class="chapter-item expanded "><a href="../../../6.java基础_集合框架/Collections工具类.html"><strong aria-hidden="true">6.3.</strong> Collections工具类</a></li><li class="chapter-item expanded "><a href="../../../6.java基础_集合框架/ConcurrentHashMap.html"><strong aria-hidden="true">6.4.</strong> ConcurrentHashMap</a></li><li class="chapter-item expanded "><a href="../../../6.java基础_集合框架/LinkedList与双向队列.html"><strong aria-hidden="true">6.5.</strong> LinkedList与双向队列</a></li><li class="chapter-item expanded "><a href="../../../6.java基础_集合框架/List.html"><strong aria-hidden="true">6.6.</strong> List</a></li><li class="chapter-item expanded "><a href="../../../6.java基础_集合框架/Map接口.html"><strong aria-hidden="true">6.7.</strong> Map接口</a></li><li class="chapter-item expanded "><a href="../../../6.java基础_集合框架/Queue与Deque.html"><strong aria-hidden="true">6.8.</strong> Queue与Deque</a></li><li class="chapter-item expanded "><a href="../../../6.java基础_集合框架/Set与LinkedHashMap.html"><strong aria-hidden="true">6.9.</strong> Set与LinkedHashMap</a></li><li class="chapter-item expanded "><a href="../../../6.java基础_集合框架/SynchronousQueue.html"><strong aria-hidden="true">6.10.</strong> SynchronousQueue</a></li><li class="chapter-item expanded "><a href="../../../6.java基础_集合框架/arraylist和linkedlist.html"><strong aria-hidden="true">6.11.</strong> arraylist和linkedlist</a></li><li class="chapter-item expanded "><a href="../../../6.java基础_集合框架/hashMap.html"><strong aria-hidden="true">6.12.</strong> hashMap</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">jvm</li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> jvm基础</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../7.jvm_jvm基础/GC后对象地址变化了HashCode如何保持不变.html"><strong aria-hidden="true">7.1.</strong> GC后对象地址变化了HashCode如何保持不变</a></li><li class="chapter-item expanded "><a href="../../../7.jvm_jvm基础/JMM与volatile关键字.html"><strong aria-hidden="true">7.2.</strong> JMM与volatile关键字</a></li><li class="chapter-item expanded "><a href="../../../7.jvm_jvm基础/JVMGC.html"><strong aria-hidden="true">7.3.</strong> JVMGC</a></li><li class="chapter-item expanded "><a href="../../../7.jvm_jvm基础/JVM内存模型.html"><strong aria-hidden="true">7.4.</strong> JVM内存模型</a></li><li class="chapter-item expanded "><a href="../../../7.jvm_jvm基础/JVM参数.html"><strong aria-hidden="true">7.5.</strong> JVM参数</a></li><li class="chapter-item expanded "><a href="../../../7.jvm_jvm基础/JVM复制算法.html"><strong aria-hidden="true">7.6.</strong> JVM复制算法</a></li><li class="chapter-item expanded "><a href="../../../7.jvm_jvm基础/javaUnsafe工具类与CAS.html"><strong aria-hidden="true">7.7.</strong> javaUnsafe工具类与CAS</a></li><li class="chapter-item expanded "><a href="../../../7.jvm_jvm基础/java内存泄露与OOM.html"><strong aria-hidden="true">7.8.</strong> java内存泄露与OOM</a></li><li class="chapter-item expanded "><a href="../../../7.jvm_jvm基础/java对象分析.html"><strong aria-hidden="true">7.9.</strong> java对象分析</a></li><li class="chapter-item expanded "><a href="../../../7.jvm_jvm基础/java引用类型.html"><strong aria-hidden="true">7.10.</strong> java引用类型</a></li><li class="chapter-item expanded "><a href="../../../7.jvm_jvm基础/类加载/index.html"><strong aria-hidden="true">7.11.</strong> 类加载</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../7.jvm_jvm基础/类加载/类加载器.html"><strong aria-hidden="true">7.11.1.</strong> 类加载器</a></li><li class="chapter-item expanded "><a href="../../../7.jvm_jvm基础/类加载/类加载过程.html"><strong aria-hidden="true">7.11.2.</strong> 类加载过程</a></li><li class="chapter-item expanded "><a href="../../../7.jvm_jvm基础/类加载/线程上下文加载器.html"><strong aria-hidden="true">7.11.3.</strong> 线程上下文加载器</a></li></ol></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> jvm问题诊断与性能分析</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../8.jvm_jvm问题诊断与性能分析/MAT.html"><strong aria-hidden="true">8.1.</strong> MAT</a></li><li class="chapter-item expanded "><a href="../../../8.jvm_jvm问题诊断与性能分析/arthas.html"><strong aria-hidden="true">8.2.</strong> arthas</a></li><li class="chapter-item expanded "><a href="../../../8.jvm_jvm问题诊断与性能分析/javaCPU占用高的问题.html"><strong aria-hidden="true">8.3.</strong> javaCPU占用高的问题</a></li><li class="chapter-item expanded "><a href="../../../8.jvm_jvm问题诊断与性能分析/java远程调试.html"><strong aria-hidden="true">8.4.</strong> java远程调试</a></li><li class="chapter-item expanded "><a href="../../../8.jvm_jvm问题诊断与性能分析/优雅停服.html"><strong aria-hidden="true">8.5.</strong> 优雅停服</a></li><li class="chapter-item expanded "><a href="../../../8.jvm_jvm问题诊断与性能分析/排查内存溢出.html"><strong aria-hidden="true">8.6.</strong> 排查内存溢出</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">9.</strong> Arthas</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../9.jvm_Arthas/1.安装.html"><strong aria-hidden="true">9.1.</strong> 安装</a></li><li class="chapter-item expanded "><a href="../../../9.jvm_Arthas/2.快速入门.html"><strong aria-hidden="true">9.2.</strong> 快速入门</a></li><li class="chapter-item expanded "><a href="../../../9.jvm_Arthas/3.命令.html"><strong aria-hidden="true">9.3.</strong> 命令</a></li><li class="chapter-item expanded "><a href="../../../9.jvm_Arthas/4.ArthasTunnel.html"><strong aria-hidden="true">9.4.</strong> ArthasTunnel</a></li><li class="chapter-item expanded "><a href="../../../9.jvm_Arthas/5.Idea插件.html"><strong aria-hidden="true">9.5.</strong> Idea插件</a></li><li class="chapter-item expanded "><a href="../../../9.jvm_Arthas/6.JavaAgent启动.html"><strong aria-hidden="true">9.6.</strong> JavaAgent启动</a></li><li class="chapter-item expanded "><a href="../../../9.jvm_Arthas/7.火焰图.html"><strong aria-hidden="true">9.7.</strong> 火焰图</a></li><li class="chapter-item expanded "><a href="../../../9.jvm_Arthas/8.thread命令.html"><strong aria-hidden="true">9.8.</strong> thread命令</a></li><li class="chapter-item expanded "><a href="../../../9.jvm_Arthas/9.trace.html"><strong aria-hidden="true">9.9.</strong> trace</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">spring</li><li class="chapter-item expanded "><div><strong aria-hidden="true">10.</strong> SpringFramework</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../10.spring_SpringFramework/0.spring容器启动总览.html"><strong aria-hidden="true">10.1.</strong> spring容器启动总览</a></li><li class="chapter-item expanded "><a href="../../../10.spring_SpringFramework/1.spring容器启动-bean实例化流程.html"><strong aria-hidden="true">10.2.</strong> spring容器启动-bean实例化流程</a></li><li class="chapter-item expanded "><a href="../../../10.spring_SpringFramework/2.SpringBean实例化过程.html"><strong aria-hidden="true">10.3.</strong> SpringBean实例化过程</a></li><li class="chapter-item expanded "><a href="../../../10.spring_SpringFramework/3.Spring依赖注入与初始化.html"><strong aria-hidden="true">10.4.</strong> Spring依赖注入与初始化</a></li><li class="chapter-item expanded "><a href="../../../10.spring_SpringFramework/4.SpringBean的生命周期.html"><strong aria-hidden="true">10.5.</strong> SpringBean的生命周期</a></li><li class="chapter-item expanded "><a href="../../../10.spring_SpringFramework/5.SpringSchedule.html"><strong aria-hidden="true">10.6.</strong> SpringSchedule</a></li><li class="chapter-item expanded "><a href="../../../10.spring_SpringFramework/ClassPathScanningCandidateComponentProvider.html"><strong aria-hidden="true">10.7.</strong> ClassPathScanningCandidateComponentProvider</a></li><li class="chapter-item expanded "><a href="../../../10.spring_SpringFramework/PropertySource.html"><strong aria-hidden="true">10.8.</strong> PropertySource</a></li><li class="chapter-item expanded "><a href="../../../10.spring_SpringFramework/Spring总结.html"><strong aria-hidden="true">10.9.</strong> Spring总结</a></li><li class="chapter-item expanded "><a href="../../../10.spring_SpringFramework/applicationContext与BeanFactory的区别.html"><strong aria-hidden="true">10.10.</strong> applicationContext与BeanFactory的区别</a></li><li class="chapter-item expanded "><a href="../../../10.spring_SpringFramework/spring杂项.html"><strong aria-hidden="true">10.11.</strong> spring杂项</a></li><li class="chapter-item expanded "><a href="../../../10.spring_SpringFramework/spring组合注解.html"><strong aria-hidden="true">10.12.</strong> spring组合注解</a></li><li class="chapter-item expanded "><a href="../../../10.spring_SpringFramework/spring解决循环依赖问题.html"><strong aria-hidden="true">10.13.</strong> spring解决循环依赖问题</a></li><li class="chapter-item expanded "><a href="../../../10.spring_SpringFramework/postprocessor/index.html"><strong aria-hidden="true">10.14.</strong> postprocessor</a></li><li class="chapter-item expanded "><a href="../../../10.spring_SpringFramework/spring-aop/index.html"><strong aria-hidden="true">10.15.</strong> spring-aop</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../10.spring_SpringFramework/spring-aop/SpringAop-cglib动态代理.html"><strong aria-hidden="true">10.15.1.</strong> SpringAop-cglib动态代理</a></li><li class="chapter-item expanded "><a href="../../../10.spring_SpringFramework/spring-aop/SpringAop-jdk动态代理.html"><strong aria-hidden="true">10.15.2.</strong> SpringAop-jdk动态代理</a></li><li class="chapter-item expanded "><a href="../../../10.spring_SpringFramework/spring-aop/SpringAop-涉及到的类.html"><strong aria-hidden="true">10.15.3.</strong> SpringAop-涉及到的类</a></li><li class="chapter-item expanded "><a href="../../../10.spring_SpringFramework/spring-aop/SpringAop-编程式代理.html"><strong aria-hidden="true">10.15.4.</strong> SpringAop-编程式代理</a></li><li class="chapter-item expanded "><a href="../../../10.spring_SpringFramework/spring-aop/SpringAop-自动代理.html"><strong aria-hidden="true">10.15.5.</strong> SpringAop-自动代理</a></li><li class="chapter-item expanded "><a href="../../../10.spring_SpringFramework/spring-aop/SpringAop总结.html"><strong aria-hidden="true">10.15.6.</strong> SpringAop总结</a></li><li class="chapter-item expanded "><a href="../../../10.spring_SpringFramework/spring-aop/aop包解析.html"><strong aria-hidden="true">10.15.7.</strong> aop包解析</a></li><li class="chapter-item expanded "><a href="../../../10.spring_SpringFramework/spring-aop/taskList.html"><strong aria-hidden="true">10.15.8.</strong> taskList</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">10.15.9.</strong> AOP应用解析</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../10.spring_SpringFramework/spring-aop/AOP应用解析/Async异步.html"><strong aria-hidden="true">10.15.9.1.</strong> Async异步</a></li><li class="chapter-item expanded "><a href="../../../10.spring_SpringFramework/spring-aop/AOP应用解析/依赖懒加载.html"><strong aria-hidden="true">10.15.9.2.</strong> 依赖懒加载</a></li><li class="chapter-item expanded "><a href="../../../10.spring_SpringFramework/spring-aop/AOP应用解析/缓存.html"><strong aria-hidden="true">10.15.9.3.</strong> 缓存</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../../10.spring_SpringFramework/spring-bean定义/index.html"><strong aria-hidden="true">10.16.</strong> spring-bean定义</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../10.spring_SpringFramework/spring-bean定义/Bean定义.html"><strong aria-hidden="true">10.16.1.</strong> Bean定义</a></li></ol></li><li class="chapter-item expanded "><a href="../../../10.spring_SpringFramework/springBeanScope/index.html"><strong aria-hidden="true">10.17.</strong> springBeanScope</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../10.spring_SpringFramework/springBeanScope/spring自定义可刷新的上下文.html"><strong aria-hidden="true">10.17.1.</strong> spring自定义可刷新的上下文</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">10.18.</strong> springframework</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../10.spring_SpringFramework/springframework/MessageSource.html"><strong aria-hidden="true">10.18.1.</strong> MessageSource</a></li><li class="chapter-item expanded "><a href="../../../10.spring_SpringFramework/springframework/spring-ioc.html"><strong aria-hidden="true">10.18.2.</strong> spring-ioc</a></li><li class="chapter-item expanded "><a href="../../../10.spring_SpringFramework/springframework/springEL.html"><strong aria-hidden="true">10.18.3.</strong> springEL</a></li><li class="chapter-item expanded "><a href="../../../10.spring_SpringFramework/springframework/spring代理.html"><strong aria-hidden="true">10.18.4.</strong> spring代理</a></li><li class="chapter-item expanded "><a href="../../../10.spring_SpringFramework/springframework/基于Ant的路径匹配.html"><strong aria-hidden="true">10.18.5.</strong> 基于Ant的路径匹配</a></li><li class="chapter-item expanded "><a href="../../../10.spring_SpringFramework/springframework/字段格式化.html"><strong aria-hidden="true">10.18.6.</strong> 字段格式化</a></li><li class="chapter-item expanded "><a href="../../../10.spring_SpringFramework/springframework/属性源抽象.html"><strong aria-hidden="true">10.18.7.</strong> 属性源抽象</a></li><li class="chapter-item expanded "><a href="../../../10.spring_SpringFramework/springframework/类型转换.html"><strong aria-hidden="true">10.18.8.</strong> 类型转换</a></li><li class="chapter-item expanded "><a href="../../../10.spring_SpringFramework/springframework/资源抽象.html"><strong aria-hidden="true">10.18.9.</strong> 资源抽象</a></li><li class="chapter-item expanded "><a href="../../../10.spring_SpringFramework/springframework/配置全局日期格式化.html"><strong aria-hidden="true">10.18.10.</strong> 配置全局日期格式化</a></li></ol></li><li class="chapter-item expanded "><a href="../../../10.spring_SpringFramework/编程式注入类/index.html"><strong aria-hidden="true">10.19.</strong> 编程式注入类</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../10.spring_SpringFramework/编程式注入类/AOP代理相关.html"><strong aria-hidden="true">10.19.1.</strong> AOP代理相关</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../../11.spring_SpringWebMvc/index.html"><strong aria-hidden="true">11.</strong> SpringWebMvc</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../11.spring_SpringWebMvc/URI_Links.html"><strong aria-hidden="true">11.1.</strong> URI_Links</a></li><li class="chapter-item expanded "><a href="../../../11.spring_SpringWebMvc/functional_endpoints.html"><strong aria-hidden="true">11.2.</strong> functional_endpoints</a></li><li class="chapter-item expanded "><a href="../../../11.spring_SpringWebMvc/mvcannotation-driven注解的作用.html"><strong aria-hidden="true">11.3.</strong> mvcannotation-driven注解的作用</a></li><li class="chapter-item expanded "><a href="../../../11.spring_SpringWebMvc/spring-mvc.html"><strong aria-hidden="true">11.4.</strong> spring-mvc</a></li><li class="chapter-item expanded "><a href="../../../11.spring_SpringWebMvc/springMVC自定义参数解析注解.html"><strong aria-hidden="true">11.5.</strong> springMVC自定义参数解析注解</a></li><li class="chapter-item expanded "><a href="../../../11.spring_SpringWebMvc/springMVC路径映射.html"><strong aria-hidden="true">11.6.</strong> springMVC路径映射</a></li><li class="chapter-item expanded "><a href="../../../11.spring_SpringWebMvc/springMVC返回后.html"><strong aria-hidden="true">11.7.</strong> springMVC返回后</a></li><li class="chapter-item expanded "><a href="../../../11.spring_SpringWebMvc/springMvcController配置.html"><strong aria-hidden="true">11.8.</strong> springMvcController配置</a></li><li class="chapter-item expanded "><a href="../../../11.spring_SpringWebMvc/内置四种filters.html"><strong aria-hidden="true">11.9.</strong> 内置四种filters</a></li><li class="chapter-item expanded "><a href="../../../11.spring_SpringWebMvc/基于注解的控制器.html"><strong aria-hidden="true">11.10.</strong> 基于注解的控制器</a></li></ol></li><li class="chapter-item expanded "><a href="../../../12.spring_SpringBoot/index.html"><strong aria-hidden="true">12.</strong> SpringBoot</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../12.spring_SpringBoot/springBoot资源处理.html"><strong aria-hidden="true">12.1.</strong> springBoot资源处理</a></li><li class="chapter-item expanded "><a href="../../../12.spring_SpringBoot/springboot-HiKariCP连接池动态数据源配置.html"><strong aria-hidden="true">12.2.</strong> springboot-HiKariCP连接池动态数据源配置</a></li><li class="chapter-item expanded "><a href="../../../12.spring_SpringBoot/springboot-devtools.html"><strong aria-hidden="true">12.3.</strong> springboot-devtools</a></li><li class="chapter-item expanded "><a href="../../../12.spring_SpringBoot/springboot-元数据.html"><strong aria-hidden="true">12.4.</strong> springboot-元数据</a></li><li class="chapter-item expanded "><a href="../../../12.spring_SpringBoot/springboot-多模块.html"><strong aria-hidden="true">12.5.</strong> springboot-多模块</a></li><li class="chapter-item expanded "><a href="../../../12.spring_SpringBoot/springboot-日志.html"><strong aria-hidden="true">12.6.</strong> springboot-日志</a></li><li class="chapter-item expanded "><a href="../../../12.spring_SpringBoot/springboot-自动配置原理.html"><strong aria-hidden="true">12.7.</strong> springboot-自动配置原理</a></li><li class="chapter-item expanded "><a href="../../../12.spring_SpringBoot/springboot-过滤器.html"><strong aria-hidden="true">12.8.</strong> springboot-过滤器</a></li><li class="chapter-item expanded "><a href="../../../12.spring_SpringBoot/springboot-配置文件与jar分离.html"><strong aria-hidden="true">12.9.</strong> springboot-配置文件与jar分离</a></li><li class="chapter-item expanded "><a href="../../../12.spring_SpringBoot/快速入门.html"><strong aria-hidden="true">12.10.</strong> 快速入门</a></li><li class="chapter-item expanded "><a href="../../../12.spring_SpringBoot/自定义springBootStarter.html"><strong aria-hidden="true">12.11.</strong> 自定义springBootStarter</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">12.12.</strong> springboot配置文件加载</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../12.spring_SpringBoot/springboot配置文件加载/propertySource原理.html"><strong aria-hidden="true">12.12.1.</strong> propertySource原理</a></li><li class="chapter-item expanded "><a href="../../../12.spring_SpringBoot/springboot配置文件加载/默认加载原则.html"><strong aria-hidden="true">12.12.2.</strong> 默认加载原则</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">12.13.</strong> 官方文档</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../12.spring_SpringBoot/官方文档/SpringApplication.html"><strong aria-hidden="true">12.13.1.</strong> SpringApplication</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../../13.spring_SpringSecurity/index.html"><strong aria-hidden="true">13.</strong> SpringSecurity</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../13.spring_SpringSecurity/spring核心逻辑.html"><strong aria-hidden="true">13.1.</strong> spring核心逻辑</a></li></ol></li><li class="chapter-item expanded "><a href="../../../14.spring_SpringWebFlux/index.html"><strong aria-hidden="true">14.</strong> SpringWebFlux</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../14.spring_SpringWebFlux/CoreFeatures.html"><strong aria-hidden="true">14.1.</strong> CoreFeatures</a></li><li class="chapter-item expanded "><a href="../../../14.spring_SpringWebFlux/DispatcherHandler.html"><strong aria-hidden="true">14.2.</strong> DispatcherHandler</a></li><li class="chapter-item expanded "><a href="../../../14.spring_SpringWebFlux/FunctionEndpoint.html"><strong aria-hidden="true">14.3.</strong> FunctionEndpoint</a></li><li class="chapter-item expanded "><a href="../../../14.spring_SpringWebFlux/URILinks.html"><strong aria-hidden="true">14.4.</strong> URILinks</a></li><li class="chapter-item expanded "><a href="../../../14.spring_SpringWebFlux/WebFluxConfig.html"><strong aria-hidden="true">14.5.</strong> WebFluxConfig</a></li><li class="chapter-item expanded "><a href="../../../14.spring_SpringWebFlux/taskList.html"><strong aria-hidden="true">14.6.</strong> taskList</a></li><li class="chapter-item expanded "><a href="../../../14.spring_SpringWebFlux/基于注解的控制器/index.html"><strong aria-hidden="true">14.7.</strong> 基于注解的控制器</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../14.spring_SpringWebFlux/基于注解的控制器/HandlerMethod.html"><strong aria-hidden="true">14.7.1.</strong> HandlerMethod</a></li><li class="chapter-item expanded "><a href="../../../14.spring_SpringWebFlux/基于注解的控制器/RequestMapping.html"><strong aria-hidden="true">14.7.2.</strong> RequestMapping</a></li></ol></li><li class="chapter-item expanded "><a href="../../../14.spring_SpringWebFlux/源码分析/index.html"><strong aria-hidden="true">14.8.</strong> 源码分析</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../14.spring_SpringWebFlux/源码分析/springBoot创建WebFlux分析.html"><strong aria-hidden="true">14.8.1.</strong> springBoot创建WebFlux分析</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../../15.spring_SpringCloud/index.html"><strong aria-hidden="true">15.</strong> SpringCloud</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../15.spring_SpringCloud/Ribbon与Feign/index.html"><strong aria-hidden="true">15.1.</strong> Ribbon与Feign</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">15.2.</strong> 服务注册与发现</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../15.spring_SpringCloud/服务注册与发现/nacos/index.html"><strong aria-hidden="true">15.2.1.</strong> nacos</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../15.spring_SpringCloud/服务注册与发现/nacos/nacos-with-spring.html"><strong aria-hidden="true">15.2.1.1.</strong> nacos-with-spring</a></li><li class="chapter-item expanded "><a href="../../../15.spring_SpringCloud/服务注册与发现/nacos/nacos-with-spring-clound.html"><strong aria-hidden="true">15.2.1.2.</strong> nacos-with-spring-clound</a></li></ol></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">15.3.</strong> 网关</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../15.spring_SpringCloud/网关/springCloudGateway/index.html"><strong aria-hidden="true">15.3.1.</strong> springCloudGateway</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../15.spring_SpringCloud/网关/springCloudGateway/springCloud中的构造者模式.html"><strong aria-hidden="true">15.3.1.1.</strong> springCloud中的构造者模式</a></li></ol></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../../16.spring_SpringCache/index.html"><strong aria-hidden="true">16.</strong> SpringCache</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../16.spring_SpringCache/1.基于申明式缓存.html"><strong aria-hidden="true">16.1.</strong> 基于申明式缓存</a></li><li class="chapter-item expanded "><a href="../../../16.spring_SpringCache/2.JCacheAnnotations.html"><strong aria-hidden="true">16.2.</strong> JCacheAnnotations</a></li><li class="chapter-item expanded "><a href="../../../16.spring_SpringCache/3.XML的申明式缓存.html"><strong aria-hidden="true">16.3.</strong> XML的申明式缓存</a></li><li class="chapter-item expanded "><a href="../../../16.spring_SpringCache/4.配置缓存库.html"><strong aria-hidden="true">16.4.</strong> 配置缓存库</a></li></ol></li><li class="chapter-item expanded "><a href="../../../17.spring_SpringDataRedis/index.html"><strong aria-hidden="true">17.</strong> SpringDataRedis</a></li><li class="chapter-item expanded affix "><li class="part-title"></li><li class="chapter-item expanded "><a href="../../../18.响应式编程/index.html"><strong aria-hidden="true">18.</strong> 响应式编程</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../18.响应式编程/ProjectReactor/index.html"><strong aria-hidden="true">18.1.</strong> ProjectReactor</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../18.响应式编程/ProjectReactor/创建发布者.html"><strong aria-hidden="true">18.1.1.</strong> 创建发布者</a></li><li class="chapter-item expanded "><a href="../../../18.响应式编程/ProjectReactor/创建订阅.html"><strong aria-hidden="true">18.1.2.</strong> 创建订阅</a></li><li class="chapter-item expanded "><a href="../../../18.响应式编程/ProjectReactor/响应式流的动作.html"><strong aria-hidden="true">18.1.3.</strong> 响应式流的动作</a></li><li class="chapter-item expanded "><a href="../../../18.响应式编程/ProjectReactor/选择合适的操作符.html"><strong aria-hidden="true">18.1.4.</strong> 选择合适的操作符</a></li><li class="chapter-item expanded "><a href="../../../18.响应式编程/ProjectReactor/core-features/index.html"><strong aria-hidden="true">18.1.5.</strong> core-features</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../18.响应式编程/ProjectReactor/core-features/FluxAndMono.html"><strong aria-hidden="true">18.1.5.1.</strong> FluxAndMono</a></li><li class="chapter-item expanded "><a href="../../../18.响应式编程/ProjectReactor/core-features/ProcessorOrSinks.html"><strong aria-hidden="true">18.1.5.2.</strong> ProcessorOrSinks</a></li><li class="chapter-item expanded "><a href="../../../18.响应式编程/ProjectReactor/core-features/线程和调度.html"><strong aria-hidden="true">18.1.5.3.</strong> 线程和调度</a></li><li class="chapter-item expanded "><a href="../../../18.响应式编程/ProjectReactor/core-features/编程式创建序列.html"><strong aria-hidden="true">18.1.5.4.</strong> 编程式创建序列</a></li><li class="chapter-item expanded "><a href="../../../18.响应式编程/ProjectReactor/core-features/错误处理.html"><strong aria-hidden="true">18.1.5.5.</strong> 错误处理</a></li></ol></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../../19.日志/index.html"><strong aria-hidden="true">19.</strong> 日志</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../19.日志/JUL.html"><strong aria-hidden="true">19.1.</strong> JUL</a></li><li class="chapter-item expanded "><a href="../../../19.日志/SL4j.html"><strong aria-hidden="true">19.2.</strong> SL4j</a></li><li class="chapter-item expanded "><a href="../../../19.日志/日志处理进化史.html"><strong aria-hidden="true">19.3.</strong> 日志处理进化史</a></li><li class="chapter-item expanded "><a href="../../../19.日志/log4j2/index.html"><strong aria-hidden="true">19.4.</strong> log4j2</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../19.日志/log4j2/Log4j2API.html"><strong aria-hidden="true">19.4.1.</strong> Log4j2API</a></li><li class="chapter-item expanded "><a href="../../../19.日志/log4j2/log4j2-web.html"><strong aria-hidden="true">19.4.2.</strong> log4j2-web</a></li><li class="chapter-item expanded "><a href="../../../19.日志/log4j2/lookups.html"><strong aria-hidden="true">19.4.3.</strong> lookups</a></li><li class="chapter-item expanded "><a href="../../../19.日志/log4j2/依赖管理.html"><strong aria-hidden="true">19.4.4.</strong> 依赖管理</a></li><li class="chapter-item expanded "><a href="../../../19.日志/log4j2/appenders/index.html"><strong aria-hidden="true">19.4.5.</strong> appenders</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../19.日志/log4j2/appenders/AsyncAppender.html"><strong aria-hidden="true">19.4.5.1.</strong> AsyncAppender</a></li><li class="chapter-item expanded "><a href="../../../19.日志/log4j2/appenders/CassandraAppender.html"><strong aria-hidden="true">19.4.5.2.</strong> CassandraAppender</a></li><li class="chapter-item expanded "><a href="../../../19.日志/log4j2/appenders/ConsoleAppender.html"><strong aria-hidden="true">19.4.5.3.</strong> ConsoleAppender</a></li><li class="chapter-item expanded "><a href="../../../19.日志/log4j2/appenders/FailoverAppender.html"><strong aria-hidden="true">19.4.5.4.</strong> FailoverAppender</a></li><li class="chapter-item expanded "><a href="../../../19.日志/log4j2/appenders/FileAppender.html"><strong aria-hidden="true">19.4.5.5.</strong> FileAppender</a></li><li class="chapter-item expanded "><a href="../../../19.日志/log4j2/appenders/JDBCAppender.html"><strong aria-hidden="true">19.4.5.6.</strong> JDBCAppender</a></li><li class="chapter-item expanded "><a href="../../../19.日志/log4j2/appenders/OutputStreamAppender.html"><strong aria-hidden="true">19.4.5.7.</strong> OutputStreamAppender</a></li><li class="chapter-item expanded "><a href="../../../19.日志/log4j2/appenders/RandomAccessFileAppender.html"><strong aria-hidden="true">19.4.5.8.</strong> RandomAccessFileAppender</a></li><li class="chapter-item expanded "><a href="../../../19.日志/log4j2/appenders/RewriteAppender.html"><strong aria-hidden="true">19.4.5.9.</strong> RewriteAppender</a></li><li class="chapter-item expanded "><a href="../../../19.日志/log4j2/appenders/RollingFileAppender.html" class="active"><strong aria-hidden="true">19.4.5.10.</strong> RollingFileAppender</a></li><li class="chapter-item expanded "><a href="../../../19.日志/log4j2/appenders/RollingRandomAccessFileAppender.html"><strong aria-hidden="true">19.4.5.11.</strong> RollingRandomAccessFileAppender</a></li><li class="chapter-item expanded "><a href="../../../19.日志/log4j2/appenders/RoutingAppender.html"><strong aria-hidden="true">19.4.5.12.</strong> RoutingAppender</a></li></ol></li><li class="chapter-item expanded "><a href="../../../19.日志/log4j2/layouts/index.html"><strong aria-hidden="true">19.4.6.</strong> layouts</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../19.日志/log4j2/layouts/CSVLayouts.html"><strong aria-hidden="true">19.4.6.1.</strong> CSVLayouts</a></li><li class="chapter-item expanded "><a href="../../../19.日志/log4j2/layouts/HTMLayouts.html"><strong aria-hidden="true">19.4.6.2.</strong> HTMLayouts</a></li><li class="chapter-item expanded "><a href="../../../19.日志/log4j2/layouts/JSONLayout.html"><strong aria-hidden="true">19.4.6.3.</strong> JSONLayout</a></li><li class="chapter-item expanded "><a href="../../../19.日志/log4j2/layouts/JSONTemplateLayouts.html"><strong aria-hidden="true">19.4.6.4.</strong> JSONTemplateLayouts</a></li><li class="chapter-item expanded "><a href="../../../19.日志/log4j2/layouts/PatternLayout.html"><strong aria-hidden="true">19.4.6.5.</strong> PatternLayout</a></li></ol></li><li class="chapter-item expanded "><a href="../../../19.日志/log4j2/log4j2配置/index.html"><strong aria-hidden="true">19.4.7.</strong> log4j2配置</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../19.日志/log4j2/log4j2配置/高级配置.html"><strong aria-hidden="true">19.4.7.1.</strong> 高级配置</a></li></ol></li></ol></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">20.</strong> 设计模式</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../20.设计模式/PipeLine.html"><strong aria-hidden="true">20.1.</strong> PipeLine</a></li></ol></li><li class="chapter-item expanded "><a href="../../../22.Maven/index.html"><strong aria-hidden="true">21.</strong> Maven</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../22.Maven/AutoConfig插件.html"><strong aria-hidden="true">21.1.</strong> AutoConfig插件</a></li><li class="chapter-item expanded "><a href="../../../22.Maven/MavenArcheType.html"><strong aria-hidden="true">21.2.</strong> MavenArcheType</a></li><li class="chapter-item expanded "><a href="../../../22.Maven/maven.html"><strong aria-hidden="true">21.3.</strong> maven</a></li><li class="chapter-item expanded "><a href="../../../22.Maven/maven-Maven_Resources_Plugin.html"><strong aria-hidden="true">21.4.</strong> maven-Maven_Resources_Plugin</a></li><li class="chapter-item expanded "><a href="../../../22.Maven/maven-archiver.html"><strong aria-hidden="true">21.5.</strong> maven-archiver</a></li><li class="chapter-item expanded "><a href="../../../22.Maven/maven-assembly-plugin.html"><strong aria-hidden="true">21.6.</strong> maven-assembly-plugin</a></li><li class="chapter-item expanded "><a href="../../../22.Maven/maven-bom.html"><strong aria-hidden="true">21.7.</strong> maven-bom</a></li><li class="chapter-item expanded "><a href="../../../22.Maven/maven-profile.html"><strong aria-hidden="true">21.8.</strong> maven-profile</a></li><li class="chapter-item expanded "><a href="../../../22.Maven/maven-依赖管理.html"><strong aria-hidden="true">21.9.</strong> maven-依赖管理</a></li><li class="chapter-item expanded "><a href="../../../22.Maven/maven-编译源码.html"><strong aria-hidden="true">21.10.</strong> maven-编译源码</a></li><li class="chapter-item expanded "><a href="../../../22.Maven/maven中的生命周期、插件、目标.html"><strong aria-hidden="true">21.11.</strong> maven中的生命周期、插件、目标</a></li><li class="chapter-item expanded "><a href="../../../22.Maven/maven打包方式.html"><strong aria-hidden="true">21.12.</strong> maven打包方式</a></li><li class="chapter-item expanded "><a href="../../../22.Maven/maven聚合项目版本管理实践.html"><strong aria-hidden="true">21.13.</strong> maven聚合项目版本管理实践</a></li></ol></li><li class="chapter-item expanded "><a href="../../../23.IO/index.html"><strong aria-hidden="true">22.</strong> IO</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../23.IO/Buffer.html"><strong aria-hidden="true">22.1.</strong> Buffer</a></li><li class="chapter-item expanded "><a href="../../../23.IO/Channel.html"><strong aria-hidden="true">22.2.</strong> Channel</a></li><li class="chapter-item expanded "><a href="../../../23.IO/LinuxIO模型演变.html"><strong aria-hidden="true">22.3.</strong> LinuxIO模型演变</a></li><li class="chapter-item expanded "><a href="../../../23.IO/Selector（选择器）.html"><strong aria-hidden="true">22.4.</strong> Selector（选择器）</a></li><li class="chapter-item expanded "><a href="../../../23.IO/主流IO模型.html"><strong aria-hidden="true">22.5.</strong> 主流IO模型</a></li><li class="chapter-item expanded "><a href="../../../23.IO/从IO到NIO个人理解.html"><strong aria-hidden="true">22.6.</strong> 从IO到NIO个人理解</a></li><li class="chapter-item expanded "><a href="../../../23.IO/字符集.html"><strong aria-hidden="true">22.7.</strong> 字符集</a></li><li class="chapter-item expanded "><a href="../../../23.IO/FileIO(NIO-2.0)/index.html"><strong aria-hidden="true">22.8.</strong> FileIO(NIO-2.0)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../23.IO/FileIO(NIO-2.0)/LinksSymbolicOtherwise.html"><strong aria-hidden="true">22.8.1.</strong> LinksSymbolicOtherwise</a></li><li class="chapter-item expanded "><a href="../../../23.IO/FileIO(NIO-2.0)/RandomAccessFiles.html"><strong aria-hidden="true">22.8.2.</strong> RandomAccessFiles</a></li><li class="chapter-item expanded "><a href="../../../23.IO/FileIO(NIO-2.0)/传统IO与NIO的API迁移.html"><strong aria-hidden="true">22.8.3.</strong> 传统IO与NIO的API迁移</a></li><li class="chapter-item expanded "><a href="../../../23.IO/FileIO(NIO-2.0)/元数据管理.html"><strong aria-hidden="true">22.8.4.</strong> 元数据管理</a></li><li class="chapter-item expanded "><a href="../../../23.IO/FileIO(NIO-2.0)/其他有用方法.html"><strong aria-hidden="true">22.8.5.</strong> 其他有用方法</a></li><li class="chapter-item expanded "><a href="../../../23.IO/FileIO(NIO-2.0)/开发自定义文件系统.html"><strong aria-hidden="true">22.8.6.</strong> 开发自定义文件系统</a></li><li class="chapter-item expanded "><a href="../../../23.IO/FileIO(NIO-2.0)/文件查找.html"><strong aria-hidden="true">22.8.7.</strong> 文件查找</a></li><li class="chapter-item expanded "><a href="../../../23.IO/FileIO(NIO-2.0)/文件管理.html"><strong aria-hidden="true">22.8.8.</strong> 文件管理</a></li><li class="chapter-item expanded "><a href="../../../23.IO/FileIO(NIO-2.0)/文件读写.html"><strong aria-hidden="true">22.8.9.</strong> 文件读写</a></li><li class="chapter-item expanded "><a href="../../../23.IO/FileIO(NIO-2.0)/监控目录变化.html"><strong aria-hidden="true">22.8.10.</strong> 监控目录变化</a></li><li class="chapter-item expanded "><a href="../../../23.IO/FileIO(NIO-2.0)/目录管理.html"><strong aria-hidden="true">22.8.11.</strong> 目录管理</a></li><li class="chapter-item expanded "><a href="../../../23.IO/FileIO(NIO-2.0)/路径操作.html"><strong aria-hidden="true">22.8.12.</strong> 路径操作</a></li><li class="chapter-item expanded "><a href="../../../23.IO/FileIO(NIO-2.0)/遍历目录树.html"><strong aria-hidden="true">22.8.13.</strong> 遍历目录树</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../../24.Servlet规范/index.html"><strong aria-hidden="true">23.</strong> Servlet规范</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../24.Servlet规范/fitler.html"><strong aria-hidden="true">23.1.</strong> fitler</a></li><li class="chapter-item expanded "><a href="../../../24.Servlet规范/httpServlet接口.html"><strong aria-hidden="true">23.2.</strong> httpServlet接口</a></li><li class="chapter-item expanded "><a href="../../../24.Servlet规范/request.html"><strong aria-hidden="true">23.3.</strong> request</a></li><li class="chapter-item expanded "><a href="../../../24.Servlet规范/response.html"><strong aria-hidden="true">23.4.</strong> response</a></li><li class="chapter-item expanded "><a href="../../../24.Servlet规范/servletContext.html"><strong aria-hidden="true">23.5.</strong> servletContext</a></li><li class="chapter-item expanded "><a href="../../../24.Servlet规范/servlet初始化.html"><strong aria-hidden="true">23.6.</strong> servlet初始化</a></li><li class="chapter-item expanded "><a href="../../../24.Servlet规范/session.html"><strong aria-hidden="true">23.7.</strong> session</a></li><li class="chapter-item expanded "><a href="../../../24.Servlet规范/入门.html"><strong aria-hidden="true">23.8.</strong> 入门</a></li><li class="chapter-item expanded "><a href="../../../24.Servlet规范/注解与可插拔.html"><strong aria-hidden="true">23.9.</strong> 注解与可插拔</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">单元测试</li><li class="chapter-item expanded "><a href="../../../21.单元测试_JUNIT5/index.html"><strong aria-hidden="true">24.</strong> JUNIT5</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../21.单元测试_JUNIT5/ConsoleLaunch.html"><strong aria-hidden="true">24.1.</strong> ConsoleLaunch</a></li><li class="chapter-item expanded "><a href="../../../21.单元测试_JUNIT5/DependencyMetadata.html"><strong aria-hidden="true">24.2.</strong> DependencyMetadata</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">24.3.</strong> writtingTest</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../21.单元测试_JUNIT5/writtingTest/Annotations.html"><strong aria-hidden="true">24.3.1.</strong> Annotations</a></li></ol></li></ol></li><li class="chapter-item expanded "><li class="part-title">ORM</li><li class="chapter-item expanded "><div><strong aria-hidden="true">25.</strong> MyBatis</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../25.ORM_MyBatis/mybatis.html"><strong aria-hidden="true">25.1.</strong> mybatis</a></li><li class="chapter-item expanded "><a href="../../../25.ORM_MyBatis/mybatis-插件开发.html"><strong aria-hidden="true">25.2.</strong> mybatis-插件开发</a></li><li class="chapter-item expanded "><a href="../../../25.ORM_MyBatis/mybatis标签.html"><strong aria-hidden="true">25.3.</strong> mybatis标签</a></li><li class="chapter-item expanded "><a href="../../../25.ORM_MyBatis/resultHandler.html"><strong aria-hidden="true">25.4.</strong> resultHandler</a></li><li class="chapter-item expanded "><a href="../../../25.ORM_MyBatis/多结果集分页.html"><strong aria-hidden="true">25.5.</strong> 多结果集分页</a></li></ol></li><li class="chapter-item expanded "><a href="../../../26.ORM_JPA/index.html"><strong aria-hidden="true">26.</strong> JPA</a></li><li class="chapter-item expanded affix "><li class="part-title">鉴权</li><li class="chapter-item expanded "><div><strong aria-hidden="true">27.</strong> Shiro</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../27.鉴权_Shiro/shiro频繁访问redis.html"><strong aria-hidden="true">27.1.</strong> shiro频繁访问redis</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">其他</li><li class="chapter-item expanded "><a href="../../../28.其他_Security/index.html"><strong aria-hidden="true">28.</strong> Security</a></li><li class="chapter-item expanded "><a href="../../../29.其他_JSR/index.html"><strong aria-hidden="true">29.</strong> JSR</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../29.其他_JSR/jar包规范.html"><strong aria-hidden="true">29.1.</strong> jar包规范</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">30.</strong> JMH</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../30.其他_JMH/java基准测试.html"><strong aria-hidden="true">30.1.</strong> java基准测试</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">31.</strong> JavaCommandLine</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../31.其他_JavaCommandLine/JAVA命令行工具.html"><strong aria-hidden="true">31.1.</strong> JAVA命令行工具</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">32.</strong> 分布式与微服务</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../32.其他_分布式与微服务/JWT无状态Session.html"><strong aria-hidden="true">32.1.</strong> JWT无状态Session</a></li><li class="chapter-item expanded "><a href="../../../32.其他_分布式与微服务/一致性Hash.html"><strong aria-hidden="true">32.2.</strong> 一致性Hash</a></li><li class="chapter-item expanded "><a href="../../../32.其他_分布式与微服务/分布式ID.html"><strong aria-hidden="true">32.3.</strong> 分布式ID</a></li><li class="chapter-item expanded "><a href="../../../32.其他_分布式与微服务/分布式Session案.html"><strong aria-hidden="true">32.4.</strong> 分布式Session案</a></li><li class="chapter-item expanded "><a href="../../../32.其他_分布式与微服务/分布式事务.html"><strong aria-hidden="true">32.5.</strong> 分布式事务</a></li><li class="chapter-item expanded "><a href="../../../32.其他_分布式与微服务/分布式协调器-Zookeeper.html"><strong aria-hidden="true">32.6.</strong> 分布式协调器-Zookeeper</a></li><li class="chapter-item expanded "><a href="../../../32.其他_分布式与微服务/分布式锁.html"><strong aria-hidden="true">32.7.</strong> 分布式锁</a></li><li class="chapter-item expanded "><a href="../../../32.其他_分布式与微服务/接口幂等性.html"><strong aria-hidden="true">32.8.</strong> 接口幂等性</a></li><li class="chapter-item expanded "><a href="../../../32.其他_分布式与微服务/负载均衡.html"><strong aria-hidden="true">32.9.</strong> 负载均衡</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">33.</strong> 未分类</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../50.其他_未分类/EasyRules.html"><strong aria-hidden="true">33.1.</strong> EasyRules</a></li><li class="chapter-item expanded "><a href="../../../50.其他_未分类/JavaLocalDate.html"><strong aria-hidden="true">33.2.</strong> JavaLocalDate</a></li><li class="chapter-item expanded "><a href="../../../50.其他_未分类/JavaSPI.html"><strong aria-hidden="true">33.3.</strong> JavaSPI</a></li><li class="chapter-item expanded "><a href="../../../50.其他_未分类/JavaUnsafe类.html"><strong aria-hidden="true">33.4.</strong> JavaUnsafe类</a></li><li class="chapter-item expanded "><a href="../../../50.其他_未分类/Java异常.html"><strong aria-hidden="true">33.5.</strong> Java异常</a></li><li class="chapter-item expanded "><a href="../../../50.其他_未分类/Java泛型的协变与逆变.html"><strong aria-hidden="true">33.6.</strong> Java泛型的协变与逆变</a></li><li class="chapter-item expanded "><a href="../../../50.其他_未分类/PO、VO、BO.html"><strong aria-hidden="true">33.7.</strong> PO、VO、BO</a></li><li class="chapter-item expanded "><a href="../../../50.其他_未分类/WeakCache.html"><strong aria-hidden="true">33.8.</strong> WeakCache</a></li><li class="chapter-item expanded "><a href="../../../50.其他_未分类/apacheUtils类.html"><strong aria-hidden="true">33.9.</strong> apacheUtils类</a></li><li class="chapter-item expanded "><a href="../../../50.其他_未分类/foreach语法糖.html"><strong aria-hidden="true">33.10.</strong> foreach语法糖</a></li><li class="chapter-item expanded "><a href="../../../50.其他_未分类/formatter.html"><strong aria-hidden="true">33.11.</strong> formatter</a></li><li class="chapter-item expanded "><a href="../../../50.其他_未分类/integer的比较问题.html"><strong aria-hidden="true">33.12.</strong> integer的比较问题</a></li><li class="chapter-item expanded "><a href="../../../50.其他_未分类/javaIdea调试.html"><strong aria-hidden="true">33.13.</strong> javaIdea调试</a></li><li class="chapter-item expanded "><a href="../../../50.其他_未分类/javaPererences工具.html"><strong aria-hidden="true">33.14.</strong> javaPererences工具</a></li><li class="chapter-item expanded "><a href="../../../50.其他_未分类/java中常见的语法糖.html"><strong aria-hidden="true">33.15.</strong> java中常见的语法糖</a></li><li class="chapter-item expanded "><a href="../../../50.其他_未分类/java优化指南.html"><strong aria-hidden="true">33.16.</strong> java优化指南</a></li><li class="chapter-item expanded "><a href="../../../50.其他_未分类/java各版本新特性.html"><strong aria-hidden="true">33.17.</strong> java各版本新特性</a></li><li class="chapter-item expanded "><a href="../../../50.其他_未分类/java序列化接口.html"><strong aria-hidden="true">33.18.</strong> java序列化接口</a></li><li class="chapter-item expanded "><a href="../../../50.其他_未分类/java模块化.html"><strong aria-hidden="true">33.19.</strong> java模块化</a></li><li class="chapter-item expanded "><a href="../../../50.其他_未分类/jdk1.8新特性.html"><strong aria-hidden="true">33.20.</strong> jdk1.8新特性</a></li><li class="chapter-item expanded "><a href="../../../50.其他_未分类/jdk与jre.html"><strong aria-hidden="true">33.21.</strong> jdk与jre</a></li><li class="chapter-item expanded "><a href="../../../50.其他_未分类/string常量池.html"><strong aria-hidden="true">33.22.</strong> string常量池</a></li><li class="chapter-item expanded "><a href="../../../50.其他_未分类/threadLocal.html"><strong aria-hidden="true">33.23.</strong> threadLocal</a></li><li class="chapter-item expanded "><a href="../../../50.其他_未分类/代码异味.html"><strong aria-hidden="true">33.24.</strong> 代码异味</a></li><li class="chapter-item expanded "><a href="../../../50.其他_未分类/基于jdk1.8的Arrays.sort.html"><strong aria-hidden="true">33.25.</strong> 基于jdk1.8的Arrays.sort</a></li><li class="chapter-item expanded "><a href="../../../50.其他_未分类/枚举.html"><strong aria-hidden="true">33.26.</strong> 枚举</a></li><li class="chapter-item expanded "><a href="../../../50.其他_未分类/注解.html"><strong aria-hidden="true">33.27.</strong> 注解</a></li><li class="chapter-item expanded "><a href="../../../50.其他_未分类/类的关系.html"><strong aria-hidden="true">33.28.</strong> 类的关系</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="../../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="rollingfileappender"><a class="header" href="#rollingfileappender">RollingFileAppender</a></h1>
+<p>RollingFileAppender 是一个 OutputStreamAppender，它写入 fileName 参数中命名的 File 并根据 <strong>TriggeringPolicy</strong> 和 <strong>RolloverPolicy</strong> 滚动文件</p>
+<p>RollingFileAppender 使用 RollingFileManager（它扩展了 OutputStreamManager）来实际执行文件 I/O 并执行翻转。</p>
+<p>虽然无法共享来自不同配置的 RolloverFileAppender，但如果 Manager 可访问，则可以共享 RollingFileManagers。</p>
+<p>例如，servlet 容器中的两个 Web 应用程序可以有自己的配置，并且如果 Log4j 位于它们公共的 ClassLoader 中，则可以安全地写入同一个文件。</p>
+<h1 id="triggeringpolicy-与rolloverstrategy"><a class="header" href="#triggeringpolicy-与rolloverstrategy">TriggeringPolicy 与RolloverStrategy</a></h1>
+<ol>
+<li>
+<p>RollingFileAppender 需要一个 TriggeringPolicy 和一个 RolloverStrategy。</p>
+</li>
+<li>
+<p>触发策略确定是否应该执行翻转，而 RolloverStrategy 定义应该如何完成翻转。</p>
+</li>
+<li>
+<p>如果没有配置 RolloverStrategy，RollingFileAppender 将使用 DefaultRolloverStrategy。</p>
+</li>
+<li>
+<p>从 log4j-2.5 开始，可以在 DefaultRolloverStrategy 中配置自定义删除操作以在翻转时运行。</p>
+</li>
+<li>
+<p>从 2.8 开始，如果没有配置文件名，那么将使用 DirectWriteRolloverStrategy 而不是 DefaultRolloverStrategy。</p>
+</li>
+<li>
+<p>从 log4j-2.9 开始，可以在 DefaultRolloverStrategy 中配置自定义 POSIX 文件属性视图操作以在翻转时运行，如果未定义，将从 RollingFileAppender 继承的 POSIX 文件属性视图将被应用。</p>
+</li>
+<li>
+<p>RollingFileAppender 不支持文件锁定。</p>
+</li>
+</ol>
+<h1 id="parameters"><a class="header" href="#parameters">Parameters</a></h1>
+<table><thead><tr><th style="text-align: left">Parameter Name</th><th style="text-align: left">Type</th><th style="text-align: left">Description</th></tr></thead><tbody>
+<tr><td style="text-align: left">append</td><td style="text-align: left">boolean</td><td style="text-align: left">When true - the default, records will be appended to the end of the file. When set to false, the file will be cleared before new records are written.</td></tr>
+<tr><td style="text-align: left">bufferedIO</td><td style="text-align: left">boolean</td><td style="text-align: left">When true - the default, records will be written to a buffer and the data will be written to disk when the buffer is full or, if immediateFlush is set, when the record is written. File locking cannot be used with bufferedIO. Performance tests have shown that using buffered I/O significantly improves performance, even if immediateFlush is enabled.</td></tr>
+<tr><td style="text-align: left">bufferSize</td><td style="text-align: left">int</td><td style="text-align: left">When bufferedIO is true, this is the buffer size, the default is 8192 bytes.</td></tr>
+<tr><td style="text-align: left">createOnDemand</td><td style="text-align: left">boolean</td><td style="text-align: left">The appender creates the file on-demand. The appender only creates the file when a log event passes all filters and is routed to this appender. Defaults to false.</td></tr>
+<tr><td style="text-align: left">filter</td><td style="text-align: left">Filter</td><td style="text-align: left">A Filter to determine if the event should be handled by this Appender. More than one Filter may be used by using a CompositeFilter.</td></tr>
+<tr><td style="text-align: left">fileName</td><td style="text-align: left">String</td><td style="text-align: left">The name of the file to write to. If the file, or any of its parent directories, do not exist, they will be created.</td></tr>
+<tr><td style="text-align: left">filePattern</td><td style="text-align: left">String</td><td style="text-align: left">归档日志文件的文件名模式。模式的格式取决于所使用的 RolloverPolicy。 .DefaultRolloverPolicy 将接受与 <a href="http://download.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html">SimpleDateFormat</a> 兼容的日期/时间模式和 或  %i 计算器. 该模式还支持运行时插值，因此任何 任何 Lookups (such as the <a href="http://logging.apache.org/log4j/2.x/manual/lookups.html#DateLookup">DateLookup</a>) can be included in the pattern.</td></tr>
+<tr><td style="text-align: left">immediateFlush</td><td style="text-align: left">boolean</td><td style="text-align: left">When set to true - the default, each write will be followed by a flush. This will guarantee the data is written to disk but could impact performance.Flushing after every write is only useful when using this appender with synchronous loggers. Asynchronous loggers and appenders will automatically flush at the end of a batch of events, even if immediateFlush is set to false. This also guarantees the data is written to disk but is more efficient.</td></tr>
+<tr><td style="text-align: left">layout</td><td style="text-align: left">Layout</td><td style="text-align: left">用于格式化 LogEvent 的布局。<br/><br/>如果未提供布局，则将使用“%m%n”的默认模式布局。</td></tr>
+<tr><td style="text-align: left">name</td><td style="text-align: left">String</td><td style="text-align: left">The name of the Appender.</td></tr>
+<tr><td style="text-align: left">policy</td><td style="text-align: left">TriggeringPolicy</td><td style="text-align: left">用于确定是否应发生翻转的策略。</td></tr>
+<tr><td style="text-align: left">strategy</td><td style="text-align: left">RolloverStrategy</td><td style="text-align: left">用于确定存档文件的名称和位置的策略</td></tr>
+<tr><td style="text-align: left">ignoreExceptions</td><td style="text-align: left">boolean</td><td style="text-align: left">The default is true, causing exceptions encountered while appending events to be internally logged and then ignored. When set to false exceptions will be propagated to the caller, instead. You must set this to false when wrapping this Appender in a <a href="http://logging.apache.org/log4j/2.x/manual/appenders.html#FailoverAppender">FailoverAppender</a>.</td></tr>
+<tr><td style="text-align: left">filePermissions</td><td style="text-align: left">String</td><td style="text-align: left">File attribute permissions in POSIX format to apply whenever the file is created.Underlying files system shall support <a href="https://docs.oracle.com/javase/7/docs/api/java/nio/file/attribute/PosixFileAttributeView.html">POSIX</a> file attribute view.Examples: rw------- or rw-rw-rw- etc...</td></tr>
+<tr><td style="text-align: left">fileOwner</td><td style="text-align: left">String</td><td style="text-align: left">File owner to define whenever the file is created.Changing file's owner may be restricted for security reason and Operation not permitted IOException thrown. Only processes with an effective user ID equal to the user ID of the file or with appropriate privileges may change the ownership of a file if <a href="http://www.gnu.org/software/libc/manual/html_node/Options-for-Files.html">_POSIX_CHOWN_RESTRICTED</a> is in effect for path.Underlying files system shall support file <a href="https://docs.oracle.com/javase/7/docs/api/java/nio/file/attribute/FileOwnerAttributeView.html">owner</a> attribute view.</td></tr>
+<tr><td style="text-align: left">fileGroup</td><td style="text-align: left">String</td><td style="text-align: left">File group to define whenever the file is created.Underlying files system shall support <a href="https://docs.oracle.com/javase/7/docs/api/java/nio/file/attribute/PosixFileAttributeView.html">POSIX</a> file attribute view.</td></tr>
+</tbody></table>
+<h1 id="triggering-policies"><a class="header" href="#triggering-policies">Triggering Policies</a></h1>
+<h2 id="composite-triggering-policy"><a class="header" href="#composite-triggering-policy">Composite Triggering Policy</a></h2>
+<p>CompositeTriggeringPolicy 组合了多个触发策略，如果任何配置的策略返回 true，则返回 true。</p>
+<p>CompositeTriggeringPolicy 只需将其他策略包装在 Policies 元素中即可配置。</p>
+<p>例如，以下 XML 片段定义了在 JVM 启动、日志大小达到 20 兆字节、以及当前日期不再与日志的开始日期匹配时滚动日志的策略。</p>
+<pre><code class="language-xml">&lt;Policies&gt;
+  &lt;OnStartupTriggeringPolicy /&gt;
+  &lt;SizeBasedTriggeringPolicy size=&quot;20 MB&quot; /&gt;
+  &lt;TimeBasedTriggeringPolicy /&gt;
+&lt;/Policies&gt;
+</code></pre>
+<h2 id="cron-triggering-policy"><a class="header" href="#cron-triggering-policy">Cron Triggering Policy</a></h2>
+<p>CronTriggeringPolicy 基于 cron 表达式触发翻转</p>
+<h3 id="parameters-1"><a class="header" href="#parameters-1">Parameters</a></h3>
+<table><thead><tr><th style="text-align: left">Parameter Name</th><th style="text-align: left">Type</th><th style="text-align: left">Description</th></tr></thead><tbody>
+<tr><td style="text-align: left">schedule</td><td style="text-align: left">String</td><td style="text-align: left">cron 表达式。该表达式与 Quartz 调度程序中允许的表达式相同。 See <a href="http://logging.apache.org/log4j/2.x/log4j-core/apidocs/org/apache/logging/log4j/core/util/CronExpression.html">CronExpression</a> for a full description of the expression.</td></tr>
+<tr><td style="text-align: left">evaluateOnStartup</td><td style="text-align: left">boolean</td><td style="text-align: left">启动时，cron 表达式将根据文件的最后修改时间戳进行评估。<br/>如果 cron 表达式指示在该时间和当前时间之间应该发生翻转，则文件将立即翻转。</td></tr>
+</tbody></table>
+<h2 id="onstartup-triggering-policy"><a class="header" href="#onstartup-triggering-policy">OnStartup Triggering Policy</a></h2>
+<p>如果日志文件早于当前 JVM 的启动时间并且达到或超过最小文件大小，则 OnStartupTriggeringPolicy 策略会导致翻转。</p>
+<table><thead><tr><th style="text-align: left">Parameter Name</th><th style="text-align: left">Type</th><th style="text-align: left">Description</th></tr></thead><tbody>
+<tr><td style="text-align: left">minSize</td><td style="text-align: left">long</td><td style="text-align: left">文件必须翻转的最小大小。<br/>无论文件大小如何，大小为零都会导致翻转。<br/>默认值为 1，这将防止滚动空文件。</td></tr>
+</tbody></table>
+<h2 id="sizebased-triggering-policy"><a class="header" href="#sizebased-triggering-policy">SizeBased Triggering Policy</a></h2>
+<p>一旦文件达到指定的大小，SizeBasedTriggeringPolicy 会导致翻转。</p>
+<p>大小可以以字节为单位指定，后缀为 KB、MB 或 GB，例如 20MB。</p>
+<p>当与基于时间的触发策略结合使用时，文件模式必须包含 %i 否则目标文件将在每次翻转时被覆盖，因为 SizeBased 触发策略不会导致文件名中的时间戳值发生更改。</p>
+<p>当在没有基于时间的触发策略的情况下使用时，SizeBased 触发策略将导致时间戳值发生变化。</p>
+<h2 id="timebased-triggering-policy"><a class="header" href="#timebased-triggering-policy">TimeBased Triggering Policy</a></h2>
+<p>一旦日期/时间模式不再适用于活动文件， TimeBasedTriggeringPolicy 会导致翻转。</p>
+<p>此策略接受一个间隔属性，该属性指示基于时间模式和  一个boolean属性指示是否 应该调整间隔以使得下一次翻转发生在边界上。</p>
+<h3 id="parameters-2"><a class="header" href="#parameters-2">Parameters</a></h3>
+<table><thead><tr><th style="text-align: left">Parameter Name</th><th style="text-align: left">Type</th><th style="text-align: left">Description</th></tr></thead><tbody>
+<tr><td style="text-align: left">interval</td><td style="text-align: left">integer</td><td style="text-align: left">根据日期模式中最具体的时间单位，应多久进行一次翻转。.例如，日期模式以小时为最具体的项目，并且每 4 小时会发生 4 次翻转。. The default value is 1.</td></tr>
+<tr><td style="text-align: left">modulate</td><td style="text-align: left">boolean</td><td style="text-align: left">指示是否应调整间隔以使下一次翻转发生在间隔边界上。. 例如，如果项目是小时，当前小时是凌晨 3 点，间隔是 4，那么第一次翻转将在凌晨 4 点发生，然后下一次翻转将在上午 8 点、中午、下午 4 点等发生。</td></tr>
+<tr><td style="text-align: left">maxRandomDelay</td><td style="text-align: left">integer</td><td style="text-align: left">Indicates the maximum number of seconds to randomly delay a rollover. By default, this is 0 which indicates no delay. This setting is useful on servers where multiple applications are configured to rollover log files at the same time and can spread the load of doing so across time.</td></tr>
+</tbody></table>
+<h1 id="rollover-strategies"><a class="header" href="#rollover-strategies">Rollover Strategies</a></h1>
+<h2 id="default-rollover-strategy"><a class="header" href="#default-rollover-strategy">Default Rollover Strategy</a></h2>
+<p>默认翻转策略接受日期/时间模式和一个在整数 </p>
+<p>上述属性在 RollingFileAppender  本身上指定该</p>
+<p>如果存在日期/时间模式，它将被当前的日期和时间值替换。</p>
+<p>如果模式包含一个整数，它将在每次翻转时递增。</p>
+<p>如果模式中同时包含日期/时间和整数，则整数将递增，直到日期/时间模式的结果发生变化。</p>
+<p>如果文件模式以“.gz”、“.zip”、“.bz2”、“.deflate”、“.pack200”或“.xz”结尾，则生成的存档将使用与后缀匹配的压缩方案进行压缩</p>
+<p>bzip2、Deflate、Pack200 和 XZ 格式需要 Apache Commons Compress。</p>
+<p>此外，XZ 需要 XZ for Java。</p>
+<p>该模式还可能包含可以在运行时解析的查找引用，如下例所示。</p>
+<p>默认翻转策略支持三种递增计数器的变体。</p>
+<p>假设 min 属性设置为 1，max 属性设置为 3，文件名为“foo.log”，文件名模式为“foo-%i.log”。</p>
+<table><thead><tr><th style="text-align: left">Number of rollovers</th><th style="text-align: left">Active output target</th><th style="text-align: left">Archived log files</th><th style="text-align: left">Description</th></tr></thead><tbody>
+<tr><td style="text-align: left">0</td><td style="text-align: left">foo.log</td><td style="text-align: left">-</td><td style="text-align: left">All logging is going to the initial file.</td></tr>
+<tr><td style="text-align: left">1</td><td style="text-align: left">foo.log</td><td style="text-align: left">foo-1.log</td><td style="text-align: left">在第一次翻转期间，foo.log 被重命名为 foo-1.log。一个新的 foo.log 文件被创建并开始写入。</td></tr>
+<tr><td style="text-align: left">2</td><td style="text-align: left">foo.log</td><td style="text-align: left">foo-2.log, foo-1.log</td><td style="text-align: left">在第二次翻转期间，foo.log 被重命名为 foo-2.log。<br />一个新的 foo.log 文件被创建并开始写入。</td></tr>
+<tr><td style="text-align: left">3</td><td style="text-align: left">foo.log</td><td style="text-align: left">foo-3.log, foo-2.log, foo-1.log</td><td style="text-align: left">在第三次翻转期间，foo.log 被重命名为 foo-3.log。一个新的 foo.log 文件被创建并开始写入。</td></tr>
+<tr><td style="text-align: left">4</td><td style="text-align: left">foo.log</td><td style="text-align: left">foo-3.log, foo-2.log, foo-1.log</td><td style="text-align: left">在第四次及以后的翻转中，foo-1.log被删除，foo-2.log被重命名为foo-1.log，foo-3.log被重命名为foo-2.log，foo.log被重命名为foo-3.日志。<br/>一个新的 foo.log 文件被创建并开始写入。</td></tr>
+</tbody></table>
+<p>相比之下，当 fileIndex 属性设置为“min”但所有其他设置都相同时，将执行“固定窗口”策略。</p>
+<table><thead><tr><th style="text-align: left">Number of rollovers</th><th style="text-align: left">Active output target</th><th style="text-align: left">Archived log files</th><th style="text-align: left">Description</th></tr></thead><tbody>
+<tr><td style="text-align: left">0</td><td style="text-align: left">foo.log</td><td style="text-align: left">-</td><td style="text-align: left">All logging is going to the initial file.</td></tr>
+<tr><td style="text-align: left">1</td><td style="text-align: left">foo.log</td><td style="text-align: left">foo-1.log</td><td style="text-align: left">During the first rollover foo.log is renamed to foo-1.log. A new foo.log file is created and starts being written to.</td></tr>
+<tr><td style="text-align: left">2</td><td style="text-align: left">foo.log</td><td style="text-align: left">foo-1.log, foo-2.log</td><td style="text-align: left">During the second rollover foo-1.log is renamed to foo-2.log and foo.log is renamed to foo-1.log. A new foo.log file is created and starts being written to.</td></tr>
+<tr><td style="text-align: left">3</td><td style="text-align: left">foo.log</td><td style="text-align: left">foo-1.log, foo-2.log, foo-3.log</td><td style="text-align: left">During the third rollover foo-2.log is renamed to foo-3.log, foo-1.log is renamed to foo-2.log and foo.log is renamed to foo-1.log. A new foo.log file is created and starts being written to.</td></tr>
+<tr><td style="text-align: left">4</td><td style="text-align: left">foo.log</td><td style="text-align: left">foo-1.log, foo-2.log, foo-3.log</td><td style="text-align: left">In the fourth and subsequent rollovers, foo-3.log is deleted, foo-2.log is renamed to foo-3.log, foo-1.log is renamed to foo-2.log and foo.log is renamed to foo-1.log. A new foo.log file is created and starts being written to.</td></tr>
+</tbody></table>
+<p>最后，从 2.8 版开始，如果 fileIndex 属性设置为“nomax”，那么最小值和最大值将被忽略，文件编号将增加 1，并且每次翻转都会有一个递增的更高值，没有最大文件数。</p>
+<h3 id="parameters-3"><a class="header" href="#parameters-3">Parameters</a></h3>
+<table><thead><tr><th style="text-align: left">Parameter Name</th><th style="text-align: left">Type</th><th style="text-align: left">Description</th></tr></thead><tbody>
+<tr><td style="text-align: left">fileIndex</td><td style="text-align: left">String</td><td style="text-align: left">If set to &quot;max&quot; (the default), files with a higher index will be newer than files with a smaller index. If set to &quot;min&quot;, file renaming and the counter will follow the Fixed Window strategy described above.</td></tr>
+<tr><td style="text-align: left">min</td><td style="text-align: left">integer</td><td style="text-align: left">The minimum value of the counter. The default value is 1.</td></tr>
+<tr><td style="text-align: left">max</td><td style="text-align: left">integer</td><td style="text-align: left">The maximum value of the counter. Once this values is reached older archives will be deleted on subsequent rollovers. The default value is 7.</td></tr>
+<tr><td style="text-align: left">compressionLevel</td><td style="text-align: left">integer</td><td style="text-align: left">Sets the compression level, 0-9, where 0 = none, 1 = best speed, through 9 = best compression. Only implemented for ZIP files.</td></tr>
+<tr><td style="text-align: left">tempCompressedFilePattern</td><td style="text-align: left">String</td><td style="text-align: left">The pattern of the file name of the archived log file during compression.</td></tr>
+</tbody></table>
+<h2 id="directwrite-rollover-strategy"><a class="header" href="#directwrite-rollover-strategy">DirectWrite Rollover Strategy</a></h2>
+<p>DirectWriteRolloverStrategy 使日志事件直接写入由文件模式表示的文件。</p>
+<p>使用此策略不会执行文件重命名。</p>
+<p>如果基于大小的触发策略导致在指定时间段内写入多个文件，它们将从 1 开始编号并不断递增，直到发生基于时间的翻转。</p>
+<p>警告：如果文件模式有一个表示应该进行压缩的后缀，则当应用程序关闭时，当前文件将不会被压缩。</p>
+<p>此外，如果时间改变以致文件模式不再与当前文件匹配，则它也不会在启动时被压缩。</p>
+<h3 id="parameters-4"><a class="header" href="#parameters-4">Parameters</a></h3>
+<table><thead><tr><th style="text-align: left">Parameter Name</th><th style="text-align: left">Type</th><th style="text-align: left">Description</th></tr></thead><tbody>
+<tr><td style="text-align: left">maxFiles</td><td style="text-align: left">String</td><td style="text-align: left">The maximum number of files to allow in the time period matching the file pattern. If the number of files is exceeded the oldest file will be deleted. If specified, the value must be greater than 1. If the value is less than zero or omitted then the number of files will not be limited.</td></tr>
+<tr><td style="text-align: left">compressionLevel</td><td style="text-align: left">integer</td><td style="text-align: left">Sets the compression level, 0-9, where 0 = none, 1 = best speed, through 9 = best compression. Only implemented for ZIP files.</td></tr>
+<tr><td style="text-align: left">tempCompressedFilePattern</td><td style="text-align: left">String</td><td style="text-align: left">The pattern of the file name of the archived log file during compression.</td></tr>
+</tbody></table>
+<p>下面是一个示例配置，它使用具有基于时间和大小的触发策略的 RollingFileAppender，将在同一天 (1-7) 创建多达 7 个存档，这些存档存储在基于当前年和月的目录中，并将</p>
+<p>使用 gzip 压缩每个存档：</p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;Configuration status=&quot;warn&quot; name=&quot;MyApp&quot; packages=&quot;&quot;&gt;
+  &lt;Appenders&gt;
+    &lt;RollingFile name=&quot;RollingFile&quot; fileName=&quot;logs/app.log&quot;
+                 filePattern=&quot;logs/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz&quot;&gt;
+      &lt;PatternLayout&gt;
+        &lt;Pattern&gt;%d %p %c{1.} [%t] %m%n&lt;/Pattern&gt;
+      &lt;/PatternLayout&gt;
+      &lt;Policies&gt;
+        &lt;TimeBasedTriggeringPolicy /&gt;
+        &lt;SizeBasedTriggeringPolicy size=&quot;250 MB&quot;/&gt;
+      &lt;/Policies&gt;
+    &lt;/RollingFile&gt;
+  &lt;/Appenders&gt;
+  &lt;Loggers&gt;
+    &lt;Root level=&quot;error&quot;&gt;
+      &lt;AppenderRef ref=&quot;RollingFile&quot;/&gt;
+    &lt;/Root&gt;
+  &lt;/Loggers&gt;
+&lt;/Configuration&gt;
+
+</code></pre>
+<p>第二个示例显示了一个翻转策略，该策略将在删除之前最多保留 20 个文件。</p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;Configuration status=&quot;warn&quot; name=&quot;MyApp&quot; packages=&quot;&quot;&gt;
+  &lt;Appenders&gt;
+    &lt;RollingFile name=&quot;RollingFile&quot; fileName=&quot;logs/app.log&quot;
+                 filePattern=&quot;logs/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz&quot;&gt;
+      &lt;PatternLayout&gt;
+        &lt;Pattern&gt;%d %p %c{1.} [%t] %m%n&lt;/Pattern&gt;
+      &lt;/PatternLayout&gt;
+      &lt;Policies&gt;
+        &lt;TimeBasedTriggeringPolicy /&gt;
+        &lt;SizeBasedTriggeringPolicy size=&quot;250 MB&quot;/&gt;
+      &lt;/Policies&gt;
+      &lt;DefaultRolloverStrategy max=&quot;20&quot;/&gt;
+    &lt;/RollingFile&gt;
+  &lt;/Appenders&gt;
+  &lt;Loggers&gt;
+    &lt;Root level=&quot;error&quot;&gt;
+      &lt;AppenderRef ref=&quot;RollingFile&quot;/&gt;
+    &lt;/Root&gt;
+  &lt;/Loggers&gt;
+&lt;/Configuration&gt;
+</code></pre>
+<p>下面是一个示例配置，它使用具有基于时间和大小的触发策略的 RollingFileAppender，将在同一天 (1-7) 创建多达 7 个存档，这些存档存储在基于当前年和月的目录中，并将</p>
+<p>使用 gzip 压缩每个存档，当小时可被 6 整除时，将每 6 小时滚动一次：</p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;Configuration status=&quot;warn&quot; name=&quot;MyApp&quot; packages=&quot;&quot;&gt;
+  &lt;Appenders&gt;
+    &lt;RollingFile name=&quot;RollingFile&quot; fileName=&quot;logs/app.log&quot;
+                 filePattern=&quot;logs/$${date:yyyy-MM}/app-%d{yyyy-MM-dd-HH}-%i.log.gz&quot;&gt;
+      &lt;PatternLayout&gt;
+        &lt;Pattern&gt;%d %p %c{1.} [%t] %m%n&lt;/Pattern&gt;
+      &lt;/PatternLayout&gt;
+      &lt;Policies&gt;
+        &lt;TimeBasedTriggeringPolicy interval=&quot;6&quot; modulate=&quot;true&quot;/&gt;
+        &lt;SizeBasedTriggeringPolicy size=&quot;250 MB&quot;/&gt;
+      &lt;/Policies&gt;
+    &lt;/RollingFile&gt;
+  &lt;/Appenders&gt;
+  &lt;Loggers&gt;
+    &lt;Root level=&quot;error&quot;&gt;
+      &lt;AppenderRef ref=&quot;RollingFile&quot;/&gt;
+    &lt;/Root&gt;
+  &lt;/Loggers&gt;
+&lt;/Configuration&gt;
+</code></pre>
+<p>此示例配置使用具有基于 cron 和大小的触发策略的 RollingFileAppender，并直接写入无限数量的存档文件。 </p>
+<p>cron 触发器每小时导致一次翻转，而文件大小限制为 250MB</p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;Configuration status=&quot;warn&quot; name=&quot;MyApp&quot; packages=&quot;&quot;&gt;
+  &lt;Appenders&gt;
+    &lt;RollingFile name=&quot;RollingFile&quot; filePattern=&quot;logs/app-%d{yyyy-MM-dd-HH}-%i.log.gz&quot;&gt;
+      &lt;PatternLayout&gt;
+        &lt;Pattern&gt;%d %p %c{1.} [%t] %m%n&lt;/Pattern&gt;
+      &lt;/PatternLayout&gt;
+      &lt;Policies&gt;
+        &lt;CronTriggeringPolicy schedule=&quot;0 0 * * * ?&quot;/&gt;
+        &lt;SizeBasedTriggeringPolicy size=&quot;250 MB&quot;/&gt;
+      &lt;/Policies&gt;
+    &lt;/RollingFile&gt;
+  &lt;/Appenders&gt;
+  &lt;Loggers&gt;
+    &lt;Root level=&quot;error&quot;&gt;
+      &lt;AppenderRef ref=&quot;RollingFile&quot;/&gt;
+    &lt;/Root&gt;
+  &lt;/Loggers&gt;
+&lt;/Configuration&gt;
+</code></pre>
+<p>此示例配置与前面的相同，但将每小时保存的文件数限制为 10：</p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;Configuration status=&quot;warn&quot; name=&quot;MyApp&quot; packages=&quot;&quot;&gt;
+  &lt;Appenders&gt;
+    &lt;RollingFile name=&quot;RollingFile&quot; filePattern=&quot;logs/app-%d{yyyy-MM-dd-HH}-%i.log.gz&quot;&gt;
+      &lt;PatternLayout&gt;
+        &lt;Pattern&gt;%d %p %c{1.} [%t] %m%n&lt;/Pattern&gt;
+      &lt;/PatternLayout&gt;
+      &lt;Policies&gt;
+        &lt;CronTriggeringPolicy schedule=&quot;0 0 * * * ?&quot;/&gt;
+        &lt;SizeBasedTriggeringPolicy size=&quot;250 MB&quot;/&gt;
+      &lt;/Policies&gt;
+      &lt;DirectWriteRolloverStrategy maxFiles=&quot;10&quot;/&gt;
+    &lt;/RollingFile&gt;
+  &lt;/Appenders&gt;
+  &lt;Loggers&gt;
+    &lt;Root level=&quot;error&quot;&gt;
+      &lt;AppenderRef ref=&quot;RollingFile&quot;/&gt;
+    &lt;/Root&gt;
+  &lt;/Loggers&gt;
+&lt;/Configuration&gt;
+</code></pre>
+<h2 id="log-archive-retention-policy"><a class="header" href="#log-archive-retention-policy">Log Archive Retention Policy</a></h2>
+<blockquote>
+<p>Delete on Rollover</p>
+</blockquote>
+<p>Log4j-2.5 引入了一个 Delete 操作，与 DefaultRolloverStrategy max 属性相比，它使用户可以更好地控制在翻转时删除哪些文件。</p>
+<p>删除操作允许用户配置一个或多个条件来选择相对于基本目录删除的文件。</p>
+<p>请注意，可以删除任何文件，而不仅仅是滚动日志文件，因此请谨慎使用此操作！</p>
+<p>使用 testMode 参数，您可以测试您的配置，而不会意外删除错误的文件。</p>
+<h3 id="parameters-5"><a class="header" href="#parameters-5">Parameters</a></h3>
+<table><thead><tr><th style="text-align: left">Parameter Name</th><th style="text-align: left">Type</th><th style="text-align: left">Description</th></tr></thead><tbody>
+<tr><td style="text-align: left">basePath</td><td style="text-align: left">String</td><td style="text-align: left"><em>Required.</em> Base path from where to start scanning for files to delete.</td></tr>
+<tr><td style="text-align: left">maxDepth</td><td style="text-align: left">int</td><td style="text-align: left">要访问的目录的最大级别数。<br/>值 0 表示仅访问起始文件（基本路径本身），除非被安全管理器拒绝。 <br/>Integer.MAX_VALUE 值表示应该访问所有级别。默认值为 1，表示仅指定基目录中的文件。</td></tr>
+<tr><td style="text-align: left">followLinks</td><td style="text-align: left">boolean</td><td style="text-align: left">Whether to follow symbolic links. Default is false.</td></tr>
+<tr><td style="text-align: left">testMode</td><td style="text-align: left">boolean</td><td style="text-align: left">如果为 true，则不会删除文件，而是在 INFO 级别将消息打印到 <a href="http://logging.apache.org/log4j/2.x/manual/configuration.html#StatusMessages">状态记录器</a>。</td></tr>
+<tr><td style="text-align: left">pathSorter</td><td style="text-align: left">PathSorter</td><td style="text-align: left">实现 <a href="http://logging.apache.org/log4j/2.x/log4j-core/apidocs/org/apache/logging/log4j/core/appender/rolling/action/PathSorter.html">PathSorter</a><br/>在选择要删除的文件之前对文件进行排序的界面。<br/>默认设置是首先对最近修改的文件进行排序。</td></tr>
+<tr><td style="text-align: left">pathConditions</td><td style="text-align: left">PathCondition[]</td><td style="text-align: left">如果未指定 ScriptCondition 则为必需 ,一个或多个 PathCondition 元素。如果指定了多个条件，则它们都需要接受条件才能删除, 条件可以嵌套，在这种情况下，仅当外部条件接受路径时才评估内部条件.如果条件不是嵌套的，它们可以按任何顺序进行计算。条件也可以通过使用 IfAll、IfAny 和 IfNot 复合条件与逻辑运算符 AND、OR 和 NOT 组合。.Users can create custom conditions or use the built-in conditions:<a href="http://logging.apache.org/log4j/2.x/manual/appenders.html#DeleteIfFileName">IfFileName</a> - accepts files whose path (relative to the base path) matches a <a href="https://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html">regular expression</a> or a <a href="https://docs.oracle.com/javase/7/docs/api/java/nio/file/FileSystem.html#getPathMatcher(java.lang.String)">glob</a>.<a href="http://logging.apache.org/log4j/2.x/manual/appenders.html#DeleteIfLastModified">IfLastModified</a> - accepts files that are as old as or older than the specified <a href="http://logging.apache.org/log4j/2.x/log4j-core/apidocs/org/apache/logging/log4j/core/appender/rolling/action/Duration.html#parseCharSequence">duration</a>.<a href="http://logging.apache.org/log4j/2.x/manual/appenders.html#DeleteIfAccumulatedFileCount">IfAccumulatedFileCount</a> - accepts paths after some count threshold is exceeded during the file tree walk.<a href="http://logging.apache.org/log4j/2.x/manual/appenders.html#DeleteIfAccumulatedFileSize">IfAccumulatedFileSize</a> - accepts paths after the accumulated file size threshold is exceeded during the file tree walk.IfAll - accepts a path if all nested conditions accept it (logical AND). Nested conditions may be evaluated in any order.IfAny - accepts a path if one of the nested conditions accept it (logical OR). Nested conditions may be evaluated in any order.IfNot - accepts a path if the nested condition does not accept it (logical NOT).</td></tr>
+<tr><td style="text-align: left">scriptCondition</td><td style="text-align: left">ScriptCondition</td><td style="text-align: left"><em>Required if no PathConditions are specified.</em> A ScriptCondition element specifying a script.The ScriptCondition should contain a <a href="http://logging.apache.org/log4j/2.x/manual/appenders.html#ScriptCondition">Script, ScriptRef or ScriptFile</a> element that specifies the logic to be executed. (See also the <a href="http://logging.apache.org/log4j/2.x/manual/filters.html#Script">ScriptFilter</a> documentation for more examples of configuring ScriptFiles and ScriptRefs.)The script is passed a number of <a href="http://logging.apache.org/log4j/2.x/manual/appenders.html#ScriptParameters">parameters</a>, including a list of paths found under the base path (up to maxDepth) and must return a list with the paths to delete.</td></tr>
+</tbody></table>
+<h3 id="iffilename-condition-parameters"><a class="header" href="#iffilename-condition-parameters">IfFileName Condition Parameters</a></h3>
+<table><thead><tr><th style="text-align: left">Parameter Name</th><th style="text-align: left">Type</th><th style="text-align: left">Description</th></tr></thead><tbody>
+<tr><td style="text-align: left">glob</td><td style="text-align: left">String</td><td style="text-align: left"><em>Required if regex not specified.</em> Matches the relative path (relative to the base path) using a limited pattern language that resembles regular expressions but with a <a href="https://docs.oracle.com/javase/7/docs/api/java/nio/file/FileSystem.html#getPathMatcher(java.lang.String)">simpler syntax</a>.</td></tr>
+<tr><td style="text-align: left">regex</td><td style="text-align: left">String</td><td style="text-align: left"><em>Required if glob not specified.</em> Matches the relative path (relative to the base path) using a regular expression as defined by the <a href="https://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html">Pattern</a> class.</td></tr>
+<tr><td style="text-align: left">nestedConditions</td><td style="text-align: left">PathCondition[]</td><td style="text-align: left">An optional set of nested <a href="http://logging.apache.org/log4j/2.x/manual/appenders.html#DeletePathCondition">PathConditions</a>. If any nested conditions exist they all need to accept the file before it is deleted. Nested conditions are only evaluated if the outer condition accepts a file (if the path name matches).</td></tr>
+</tbody></table>
+<h3 id="iflastmodified-condition-parameters"><a class="header" href="#iflastmodified-condition-parameters">IfLastModified Condition Parameters</a></h3>
+<table><thead><tr><th style="text-align: left">Parameter Name</th><th style="text-align: left">Type</th><th style="text-align: left">Description</th></tr></thead><tbody>
+<tr><td style="text-align: left">age</td><td style="text-align: left">String</td><td style="text-align: left"><em>Required.</em> Specifies a <a href="http://logging.apache.org/log4j/2.x/log4j-core/apidocs/org/apache/logging/log4j/core/appender/rolling/action/Duration.html#parseCharSequence">duration</a>. The condition accepts files that are as old or older than the specified duration.</td></tr>
+<tr><td style="text-align: left">nestedConditions</td><td style="text-align: left">PathCondition[]</td><td style="text-align: left">An optional set of nested <a href="http://logging.apache.org/log4j/2.x/manual/appenders.html#DeletePathCondition">PathConditions</a>. If any nested conditions exist they all need to accept the file before it is deleted. Nested conditions are only evaluated if the outer condition accepts a file (if the file is old enough).</td></tr>
+</tbody></table>
+<h3 id="ifaccumulatedfilecount-condition-parameters"><a class="header" href="#ifaccumulatedfilecount-condition-parameters">IfAccumulatedFileCount Condition Parameters</a></h3>
+<table><thead><tr><th style="text-align: left">Parameter Name</th><th style="text-align: left">Type</th><th style="text-align: left">Description</th></tr></thead><tbody>
+<tr><td style="text-align: left">exceeds</td><td style="text-align: left">int</td><td style="text-align: left"><em>Required.</em> The threshold count from which files will be deleted.</td></tr>
+<tr><td style="text-align: left">nestedConditions</td><td style="text-align: left">PathCondition[]</td><td style="text-align: left">An optional set of nested <a href="http://logging.apache.org/log4j/2.x/manual/appenders.html#DeletePathCondition">PathConditions</a>. If any nested conditions exist they all need to accept the file before it is deleted. Nested conditions are only evaluated if the outer condition accepts a file (if the threshold count has been exceeded).</td></tr>
+</tbody></table>
+<h3 id="ifaccumulatedfilesize-condition-parameters"><a class="header" href="#ifaccumulatedfilesize-condition-parameters">IfAccumulatedFileSize Condition Parameters</a></h3>
+<table><thead><tr><th style="text-align: left">Parameter Name</th><th style="text-align: left">Type</th><th style="text-align: left">Description</th></tr></thead><tbody>
+<tr><td style="text-align: left">exceeds</td><td style="text-align: left">String</td><td style="text-align: left"><em>Required.</em> The threshold accumulated file size from which files will be deleted. The size can be specified in bytes, with the suffix KB, MB or GB, for example 20MB.</td></tr>
+<tr><td style="text-align: left">nestedConditions</td><td style="text-align: left">PathCondition[]</td><td style="text-align: left">An optional set of nested <a href="http://logging.apache.org/log4j/2.x/manual/appenders.html#DeletePathCondition">PathConditions</a>. If any nested conditions exist they all need to accept the file before it is deleted. Nested conditions are only evaluated if the outer condition accepts a file (if the threshold accumulated file size has been exceeded).</td></tr>
+</tbody></table>
+<p>下面是一个示例配置，它使用 RollingFileAppender 和配置为每天午夜触发的 cron 触发策略。</p>
+<p>档案存储在基于当前年份和月份的目录中。</p>
+<p>基目录下与“<em>/app-</em>.log.gz”glob 匹配且存在于 60 天或更旧的所有文件将在翻转时被删除。</p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;Configuration status=&quot;warn&quot; name=&quot;MyApp&quot; packages=&quot;&quot;&gt;
+  &lt;Properties&gt;
+    &lt;Property name=&quot;baseDir&quot;&gt;logs&lt;/Property&gt;
+  &lt;/Properties&gt;
+  &lt;Appenders&gt;
+    &lt;RollingFile name=&quot;RollingFile&quot; fileName=&quot;${baseDir}/app.log&quot;
+          filePattern=&quot;${baseDir}/$${date:yyyy-MM}/app-%d{yyyy-MM-dd}.log.gz&quot;&gt;
+      &lt;PatternLayout pattern=&quot;%d %p %c{1.} [%t] %m%n&quot; /&gt;
+      &lt;CronTriggeringPolicy schedule=&quot;0 0 0 * * ?&quot;/&gt;
+      &lt;DefaultRolloverStrategy&gt;
+        &lt;Delete basePath=&quot;${baseDir}&quot; maxDepth=&quot;2&quot;&gt;
+          &lt;IfFileName glob=&quot;*/app-*.log.gz&quot; /&gt;
+          &lt;IfLastModified age=&quot;60d&quot; /&gt;
+        &lt;/Delete&gt;
+      &lt;/DefaultRolloverStrategy&gt;
+    &lt;/RollingFile&gt;
+  &lt;/Appenders&gt;
+  &lt;Loggers&gt;
+    &lt;Root level=&quot;error&quot;&gt;
+      &lt;AppenderRef ref=&quot;RollingFile&quot;/&gt;
+    &lt;/Root&gt;
+  &lt;/Loggers&gt;
+&lt;/Configuration&gt;
+</code></pre>
+<p>下面是一个示例配置，它使用具有基于时间和大小的触发策略的 RollingFileAppender，将在同一天 (1-100) 创建多达 100 个存档，这些存档存储在基于当前年和月的目录中，并将</p>
+<p>使用 gzip 压缩每个存档，并将每小时滚动一次。</p>
+<p>在每次翻转期间，此配置将删除与“<em>/app-</em>.log.gz”匹配且 30 天或更旧的文件，但保留最近的 100 GB 或最近的 10 个文件，以先到者为准。</p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;Configuration status=&quot;warn&quot; name=&quot;MyApp&quot; packages=&quot;&quot;&gt;
+  &lt;Properties&gt;
+    &lt;Property name=&quot;baseDir&quot;&gt;logs&lt;/Property&gt;
+  &lt;/Properties&gt;
+  &lt;Appenders&gt;
+    &lt;RollingFile name=&quot;RollingFile&quot; fileName=&quot;${baseDir}/app.log&quot;
+          filePattern=&quot;${baseDir}/$${date:yyyy-MM}/app-%d{yyyy-MM-dd-HH}-%i.log.gz&quot;&gt;
+      &lt;PatternLayout pattern=&quot;%d %p %c{1.} [%t] %m%n&quot; /&gt;
+      &lt;Policies&gt;
+        &lt;TimeBasedTriggeringPolicy /&gt;
+        &lt;SizeBasedTriggeringPolicy size=&quot;250 MB&quot;/&gt;
+      &lt;/Policies&gt;
+      &lt;DefaultRolloverStrategy max=&quot;100&quot;&gt;
+        &lt;!--
+        Nested conditions: the inner condition is only evaluated on files
+        for which the outer conditions are true.
+        --&gt;
+        &lt;Delete basePath=&quot;${baseDir}&quot; maxDepth=&quot;2&quot;&gt;
+          &lt;IfFileName glob=&quot;*/app-*.log.gz&quot;&gt;
+            &lt;IfLastModified age=&quot;30d&quot;&gt;
+              &lt;IfAny&gt;
+                &lt;IfAccumulatedFileSize exceeds=&quot;100 GB&quot; /&gt;
+                &lt;IfAccumulatedFileCount exceeds=&quot;10&quot; /&gt;
+              &lt;/IfAny&gt;
+            &lt;/IfLastModified&gt;
+          &lt;/IfFileName&gt;
+        &lt;/Delete&gt;
+      &lt;/DefaultRolloverStrategy&gt;
+    &lt;/RollingFile&gt;
+  &lt;/Appenders&gt;
+  &lt;Loggers&gt;
+    &lt;Root level=&quot;error&quot;&gt;
+      &lt;AppenderRef ref=&quot;RollingFile&quot;/&gt;
+    &lt;/Root&gt;
+  &lt;/Loggers&gt;
+&lt;/Configuration&gt;
+</code></pre>
+<h3 id="scriptcondition-parameters"><a class="header" href="#scriptcondition-parameters">ScriptCondition Parameters</a></h3>
+<table><thead><tr><th style="text-align: left">Parameter Name</th><th style="text-align: left">Type</th><th style="text-align: left">Description</th></tr></thead><tbody>
+<tr><td style="text-align: left">script</td><td style="text-align: left">Script, ScriptFile or ScriptRef</td><td style="text-align: left">The Script element that specifies the logic to be executed. The script is passed a list of paths found under the base path and must return the paths to delete as a java.util.List&lt;<a href="http://logging.apache.org/log4j/2.x/log4j-core/apidocs/org/apache/logging/log4j/core/appender/rolling/action/PathWithAttributes.html">PathWithAttributes</a>&gt;. See also the <a href="http://logging.apache.org/log4j/2.x/manual/filters.html#Script">ScriptFilter</a> documentation for an example of how ScriptFiles and ScriptRefs can be configured.</td></tr>
+</tbody></table>
+<h3 id="script-parameters"><a class="header" href="#script-parameters">Script Parameters</a></h3>
+<table><thead><tr><th style="text-align: left">Parameter Name</th><th style="text-align: left">Type</th><th style="text-align: left">Description</th></tr></thead><tbody>
+<tr><td style="text-align: left">basePath</td><td style="text-align: left">java.nio.file.Path</td><td style="text-align: left">The directory from where the Delete action started scanning for files to delete. Can be used to relativize the paths in the pathList.</td></tr>
+<tr><td style="text-align: left">pathList</td><td style="text-align: left">java.util.List&lt;<a href="http://logging.apache.org/log4j/2.x/log4j-core/apidocs/org/apache/logging/log4j/core/appender/rolling/action/PathWithAttributes.html">PathWithAttributes</a>&gt;</td><td style="text-align: left">The list of paths found under the base path up to the specified max depth, sorted most recently modified files first. The script is free to modify and return this list.</td></tr>
+<tr><td style="text-align: left">statusLogger</td><td style="text-align: left">StatusLogger</td><td style="text-align: left">The StatusLogger that can be used to log internal events during script execution.</td></tr>
+<tr><td style="text-align: left">configuration</td><td style="text-align: left">Configuration</td><td style="text-align: left">The Configuration that owns this ScriptCondition.</td></tr>
+<tr><td style="text-align: left">substitutor</td><td style="text-align: left">StrSubstitutor</td><td style="text-align: left">The StrSubstitutor used to replace lookup variables.</td></tr>
+<tr><td style="text-align: left">?</td><td style="text-align: left">String</td><td style="text-align: left">Any properties declared in the configuration.</td></tr>
+</tbody></table>
+<p>下面是一个示例配置，它使用 RollingFileAppender 和配置为每天午夜触发的 cron 触发策略。</p>
+<p>档案存储在基于当前年份和月份的目录中。</p>
+<p>该脚本返回日期为 13 日星期五的基本目录下的滚动文件列表。</p>
+<p>删除操作将删除脚本返回的所有文件。</p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;Configuration status=&quot;trace&quot; name=&quot;MyApp&quot; packages=&quot;&quot;&gt;
+  &lt;Properties&gt;
+    &lt;Property name=&quot;baseDir&quot;&gt;logs&lt;/Property&gt;
+  &lt;/Properties&gt;
+  &lt;Appenders&gt;
+    &lt;RollingFile name=&quot;RollingFile&quot; fileName=&quot;${baseDir}/app.log&quot;
+          filePattern=&quot;${baseDir}/$${date:yyyy-MM}/app-%d{yyyyMMdd}.log.gz&quot;&gt;
+      &lt;PatternLayout pattern=&quot;%d %p %c{1.} [%t] %m%n&quot; /&gt;
+      &lt;CronTriggeringPolicy schedule=&quot;0 0 0 * * ?&quot;/&gt;
+      &lt;DefaultRolloverStrategy&gt;
+        &lt;Delete basePath=&quot;${baseDir}&quot; maxDepth=&quot;2&quot;&gt;
+          &lt;ScriptCondition&gt;
+            &lt;Script name=&quot;superstitious&quot; language=&quot;groovy&quot;&gt;&lt;![CDATA[
+                import java.nio.file.*;
+ 
+                def result = [];
+                def pattern = ~/\d*\/app-(\d*)\.log\.gz/;
+ 
+                pathList.each { pathWithAttributes -&gt;
+                  def relative = basePath.relativize pathWithAttributes.path
+                  statusLogger.trace 'SCRIPT: relative path=' + relative + &quot; (base=$basePath)&quot;;
+ 
+                  // remove files dated Friday the 13th
+ 
+                  def matcher = pattern.matcher(relative.toString());
+                  if (matcher.find()) {
+                    def dateString = matcher.group(1);
+                    def calendar = Date.parse(&quot;yyyyMMdd&quot;, dateString).toCalendar();
+                    def friday13th = calendar.get(Calendar.DAY_OF_MONTH) == 13 \
+                                  &amp;&amp; calendar.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY;
+                    if (friday13th) {
+                      result.add pathWithAttributes;
+                      statusLogger.trace 'SCRIPT: deleting path ' + pathWithAttributes;
+                    }
+                  }
+                }
+                statusLogger.trace 'SCRIPT: returning ' + result;
+                result;
+              ]] &gt;
+            &lt;/Script&gt;
+          &lt;/ScriptCondition&gt;
+        &lt;/Delete&gt;
+      &lt;/DefaultRolloverStrategy&gt;
+    &lt;/RollingFile&gt;
+  &lt;/Appenders&gt;
+  &lt;Loggers&gt;
+    &lt;Root level=&quot;error&quot;&gt;
+      &lt;AppenderRef ref=&quot;RollingFile&quot;/&gt;
+    &lt;/Root&gt;
+  &lt;/Loggers&gt;
+&lt;/Configuration&gt;
+</code></pre>
+<h2 id="log-archive-file-attribute-view-policy"><a class="header" href="#log-archive-file-attribute-view-policy">Log Archive File Attribute View Policy</a></h2>
+<blockquote>
+<p>Custom file attribute on Rollover</p>
+</blockquote>
+<p>og4j-2.9 引入了 PosixViewAttribute 操作，使用户可以更好地控制应应用哪些文件属性权限、所有者和组。 </p>
+<p>PosixViewAttribute 操作允许用户配置一个或多个条件来选择相对于基目录的合格文件。</p>
+<h3 id="posixviewattribute-parameters"><a class="header" href="#posixviewattribute-parameters">PosixViewAttribute Parameters</a></h3>
+<table><thead><tr><th style="text-align: left">Parameter Name</th><th style="text-align: left">Type</th><th style="text-align: left">Description</th></tr></thead><tbody>
+<tr><td style="text-align: left">basePath</td><td style="text-align: left">String</td><td style="text-align: left"><em>Required.</em> Base path from where to start scanning for files to apply attributes.</td></tr>
+<tr><td style="text-align: left">maxDepth</td><td style="text-align: left">int</td><td style="text-align: left">The maximum number of levels of directories to visit. A value of 0 means that only the starting file (the base path itself) is visited, unless denied by the security manager. A value of Integer.MAX_VALUE indicates that all levels should be visited. The default is 1, meaning only the files in the specified base directory.</td></tr>
+<tr><td style="text-align: left">followLinks</td><td style="text-align: left">boolean</td><td style="text-align: left">Whether to follow symbolic links. Default is false.</td></tr>
+<tr><td style="text-align: left">pathConditions</td><td style="text-align: left">PathCondition[]</td><td style="text-align: left">see <a href="http://logging.apache.org/log4j/2.x/manual/appenders.html#DeletePathCondition">DeletePathCondition</a></td></tr>
+<tr><td style="text-align: left">filePermissions</td><td style="text-align: left">String</td><td style="text-align: left">File attribute permissions in POSIX format to apply when action is executed.Underlying files system shall support <a href="https://docs.oracle.com/javase/7/docs/api/java/nio/file/attribute/PosixFileAttributeView.html">POSIX</a> file attribute view.Examples: rw------- or rw-rw-rw- etc...</td></tr>
+<tr><td style="text-align: left">fileOwner</td><td style="text-align: left">String</td><td style="text-align: left">File owner to define when action is executed.Changing file's owner may be restricted for security reason and Operation not permitted IOException thrown. Only processes with an effective user ID equal to the user ID of the file or with appropriate privileges may change the ownership of a file if <a href="http://www.gnu.org/software/libc/manual/html_node/Options-for-Files.html">_POSIX_CHOWN_RESTRICTED</a> is in effect for path.Underlying files system shall support file <a href="https://docs.oracle.com/javase/7/docs/api/java/nio/file/attribute/FileOwnerAttributeView.html">owner</a> attribute view.</td></tr>
+<tr><td style="text-align: left">fileGroup</td><td style="text-align: left">String</td><td style="text-align: left">File group to define when action is executed.Underlying files system shall support <a href="https://docs.oracle.com/javase/7/docs/api/java/nio/file/attribute/PosixFileAttributeView.html">POSIX</a> file attribute view.</td></tr>
+</tbody></table>
+<p>以下是使用 RollingFileAppender 并为当前和滚动日志文件定义不同 POSIX 文件属性视图的示例配置。</p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;Configuration status=&quot;trace&quot; name=&quot;MyApp&quot; packages=&quot;&quot;&gt;
+  &lt;Properties&gt;
+    &lt;Property name=&quot;baseDir&quot;&gt;logs&lt;/Property&gt;
+  &lt;/Properties&gt;
+  &lt;Appenders&gt;
+    &lt;RollingFile name=&quot;RollingFile&quot; fileName=&quot;${baseDir}/app.log&quot;
+          		 filePattern=&quot;${baseDir}/$${date:yyyy-MM}/app-%d{yyyyMMdd}.log.gz&quot;
+                 filePermissions=&quot;rw-------&quot;&gt;
+      &lt;PatternLayout pattern=&quot;%d %p %c{1.} [%t] %m%n&quot; /&gt;
+      &lt;CronTriggeringPolicy schedule=&quot;0 0 0 * * ?&quot;/&gt;
+      &lt;DefaultRolloverStrategy stopCustomActionsOnError=&quot;true&quot;&gt;
+        &lt;PosixViewAttribute basePath=&quot;${baseDir}/$${date:yyyy-MM}&quot; filePermissions=&quot;r--r--r--&quot;&gt;
+        	&lt;IfFileName glob=&quot;*.gz&quot; /&gt;
+        &lt;/PosixViewAttribute&gt;
+      &lt;/DefaultRolloverStrategy&gt;
+    &lt;/RollingFile&gt;
+  &lt;/Appenders&gt;
+ 
+  &lt;Loggers&gt;
+    &lt;Root level=&quot;error&quot;&gt;
+      &lt;AppenderRef ref=&quot;RollingFile&quot;/&gt;
+    &lt;/Root&gt;
+  &lt;/Loggers&gt;
+ 
+&lt;/Configuration&gt;
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../../19.日志/log4j2/appenders/RewriteAppender.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../../../19.日志/log4j2/appenders/RollingRandomAccessFileAppender.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../../19.日志/log4j2/appenders/RewriteAppender.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../../../19.日志/log4j2/appenders/RollingRandomAccessFileAppender.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>
